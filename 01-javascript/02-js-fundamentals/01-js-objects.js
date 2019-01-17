@@ -36,3 +36,19 @@ console.log('Managers')
 for(var i = 0; i < users.managers.length; i++){
     console.log((i+1) + ' - ' + users.managers[i]['last_name'] + ', ' + users.managers[i]['first_name'] + ' - ' + (users.employees[i]['first_name'].length + users.employees[i]['last_name'].length))
 }
+
+
+console.log(makeDojo('Chicago', 65));
+console.log(makeDojo('Berkley', 0));
+function makeDojo(name, students){
+    const dojo = {};
+    dojo.name = name;
+    dojo.students = students;
+    if(dojo.students > 50){
+        dojo.hiring = true;
+    }
+    else if(dojo.students <= 0){
+        dojo = "closed for now";
+    }
+    return dojo;
+}
