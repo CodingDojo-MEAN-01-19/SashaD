@@ -1,1 +1,23 @@
-// 1 hour
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("button").click(function() {
+            $.get("https://api.github.com/users/sushidools", displayName)
+            function displayName(data){ 
+                $("h3").text(data.login); 
+            }
+        });
+    });
+</script>
+</head>
+<body>
+<button>Show Git Username</button>
+<br>
+<br>
+<h3></h3>
+
+</body>
+</html>
