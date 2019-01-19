@@ -7,7 +7,12 @@
 <!--Also need to find a way after checking if the selected answer is right to then add points to total acquired points-->
 <script>
     $(document).ready(function(){
-        $('h3').append('This is where the score will be.');
+        //global counters to store the score
+        var Score = {
+            correct: 0,
+            incorrect: 0,
+        }
+        $('h3').append(Score.correct);
             $(".easyquestions1").click(function(){ 
                 $.get("https://opentdb.com/api.php?amount=1&category=17&difficulty=easy", function(data){
                     console.log(data)
@@ -16,11 +21,23 @@
                         let element = info[index].question;
                         $(".easyquestions1").empty().append(element).append('<br>').append('<br>');
                         let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        let correctAnswer = info[index].correct_answer;
                         
                         for(var content in answers ) {
                             console.log(answers[content]);
                             let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
                             $(".easyquestions1").append(radio);
+                            // next check if the radio button that is clicked is the one with the correct answer
+                            $("radio").click(function(){
+                                if($('input[name="${answers[content]}"]:checked').val() == correctAnswer[content].val()){
+                                    Score.correct = Score.correct + 100;
+                                    console.log(Score.correct);
+                                    $(".easyquestions1").empty();
+                                }
+                                else{
+                                    Score.incorrect++;
+                                };
+                            });
                         };
                     };
                 });
