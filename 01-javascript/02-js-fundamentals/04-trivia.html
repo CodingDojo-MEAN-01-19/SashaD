@@ -1,1 +1,205 @@
-<!-- 2 hours -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--There has got to be a better way to loop through the data and then separate it by category and difficulty-->
+<!--Below there is nothing checking the answers yet or keeping the page from loading more than one question at a time-->
+<!--Also need to find a way after checking if the selected answer is right to then add points to total acquired points-->
+<script>
+    $(document).ready(function(){
+        $('h3').append('This is where the score will be.');
+            $(".easyquestions1").click(function(){ 
+                $.get("https://opentdb.com/api.php?amount=1&category=17&difficulty=easy", function(data){
+                    console.log(data)
+                    let info = data.results;
+                    for(let index in info) {
+                        let element = info[index].question;
+                        $(".easyquestions1").empty().append(element).append('<br>').append('<br>');
+                        let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        
+                        for(var content in answers ) {
+                            console.log(answers[content]);
+                            let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
+                            $(".easyquestions1").append(radio);
+                        };
+                    };
+                });
+            });
+            $(".medquestions1").click(function(){
+                $.get("https://opentdb.com/api.php?amount=1&category=17&difficulty=medium", function(data){
+                    console.log(data)
+                    let info = data.results;
+                    for(let index in info) {
+                        let element = info[index].question;
+                        $(".medquestions1").empty().append(element).append('<br>').append('<br>');
+                        let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        
+                        for(var content in answers ) {
+                            console.log(answers[content]);
+                            let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
+                            $(".medquestions1").append(radio);
+                        };
+                    };
+                });
+            });
+            $(".hardquestions1").click(function(){
+                $.get("https://opentdb.com/api.php?amount=1&category=17&difficulty=hard", function(data){
+                    console.log(data)
+                    let info = data.results;
+                    for(let index in info) {
+                        let element = info[index].question;
+                        $(".hardquestions1").empty().append(element).append('<br>').append('<br>');
+                        let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        
+                        for(var content in answers ) {
+                            console.log(answers[content]);
+                            let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
+                            $(".hardquestions1").append(radio);
+                        };
+                    };
+                });
+            });
+            $(".easyquestions2").click(function(){
+                $.get("https://opentdb.com/api.php?amount=1&category=29&difficulty=easy", function(data){
+                    console.log(data)
+                    let info = data.results;
+                    for(let index in info) {
+                        let element = info[index].question;
+                        $(".easyquestions2").empty().append(element).append('<br>').append('<br>');
+                        let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        
+                        for(var content in answers ) {
+                            console.log(answers[content]);
+                            let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
+                            $(".easyquestions2").append(radio);
+                        };
+                    };
+                });
+            }); 
+            $(".medquestions2").click(function(){
+                $.get("https://opentdb.com/api.php?amount=1&category=29&difficulty=medium", function(data){
+                    console.log(data)
+                    let info = data.results;
+                    for(let index in info) {
+                        let element = info[index].question;
+                        $(".medquestions2").empty().append(element).append('<br>').append('<br>');
+                        let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        
+                        for(var content in answers ) {
+                            console.log(answers[content]);
+                            let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
+                            $(".medquestions2").append(radio);
+                        };
+                    };
+                });
+            });
+            $(".hardquestions2").click(function(){
+                $.get("https://opentdb.com/api.php?amount=1&category=29&difficulty=hard", function(data){
+                    console.log(data)
+                    let info = data.results;
+                    for(let index in info) {
+                        let element = info[index].question;
+                        $(".hardquestions2").empty().append(element).append('<br>').append('<br>');
+                        let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        
+                        for(var content in answers ) {
+                            console.log(answers[content]);
+                            let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
+                            $(".hardquestions2").append(radio);
+                        };
+                    };
+                });
+            });
+            $(".easyquestions3").click(function(){
+                $.get("https://opentdb.com/api.php?amount=1&category=27&difficulty=easy", function(data){
+                    console.log(data)
+                    let info = data.results;
+                    for(let index in info) {
+                        let element = info[index].question;
+                        $(".easyquestions3").empty().append(element).append('<br>').append('<br>');
+                        let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        
+                        for(var content in answers ) {
+                            console.log(answers[content]);
+                            let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
+                            $(".easyquestions3").append(radio);
+                        };
+                    };
+                });
+            });
+            $(".medquestions3").click(function(){
+                $.get("https://opentdb.com/api.php?amount=1&category=27&difficulty=medium", function(data){
+                    console.log(data)
+                    let info = data.results;
+                    for(let index in info) {
+                        let element = info[index].question;
+                        $(".medquestions3").empty().append(element).append('<br>').append('<br>');
+                        let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        
+                        for(var content in answers ) {
+                            console.log(answers[content]);
+                            let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
+                            $(".medquestions3").append(radio);
+                        };
+                    };
+                });
+            });
+            $(".hardquestions3").click(function(){
+                $.get("https://opentdb.com/api.php?amount=1&category=27&difficulty=hard", function(data){
+                    console.log(data)
+                    let info = data.results;
+                    for(let index in info) {
+                        let element = info[index].question;
+                        $(".hardquestions3").empty().append(element).append('<br>').append('<br>');
+                        let answers = [info[index].correct_answer, ...info[index].incorrect_answers];
+                        
+                        for(var content in answers ) {
+                            console.log(answers[content]);
+                            let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
+                            $(".hardquestions3").append(radio);
+                        };
+                    };
+                });
+            });    
+        });
+</script>
+</head>
+<body>
+    <!--There is too much in the html, but was worried about making the page look like the wirefram and wasn't sure how to do it will looping through so many things.-->
+    <button style="display:inline-block;width: 15%;">Get New Questions</button>
+    <h1 style="display:inline-block;width: 40%;text-align: center;">Trivia Night</h1>
+    <h3 style="display:inline-block;width: 40%;text-align: right;"></h3>
+    <div id="wrapper">
+        <div style ='width:33%;display:inline-block;'id='col1' class='col'>
+            <h2>Nature & Science</h2>
+            <div style='display: inline-block; width: 230px; height: 230px; background-color:rgb(110, 197, 226);border:2px solid ;position: relative;text-align: center;'class='easyquestions1'><h4 style='position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);'>100</h4></div>
+            <br>
+            <br>
+            <div style='display: inline-block; width: 230px; height: 230px; background-color:rgb(110, 197, 226);border:2px solid ;position: relative;text-align: center;'class='medquestions1'><h4 style='position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);'>200</h4></div>
+            <br>
+            <br>
+            <div style='display: inline-block; width: 230px; height: 230px; background-color:rgb(110, 197, 226);border:2px solid ;position: relative;text-align: center;'class='hardquestions1'><h4 style='position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);'>300</h4></div>
+        </div>
+        <div style ='width:33%;display:inline-block;'id='col2' class='col'>
+            <h2>Entertainment: Comics</h2>
+            <div style='display: inline-block; width: 230px; height: 230px; background-color:rgb(110, 197, 226);border:2px solid ;position: relative;text-align: center;'class='easyquestions2'><h4 style='position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);'>100</h4></div>
+            <br>
+            <br>
+            <div style='display: inline-block; width: 230px; height: 230px; background-color:rgb(110, 197, 226);border:2px solid ;position: relative;text-align: center;'class='medquestions2'><h4 style='position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);'>200</h4></div>
+            <br>
+            <br>
+            <div style='display: inline-block; width: 230px; height: 230px; background-color:rgb(110, 197, 226);border:2px solid ;position: relative;text-align: center;'class='hardquestions2'><h4 style='position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);'>300</h4></div>
+        </div>
+        <div style ='width:33%;display:inline-block;vertical-align: top;'id='col3' class='col'>
+            <h2>Animals</h2>
+            <div style='display: inline-block; width: 230px; height: 230px; background-color:rgb(110, 197, 226);border:2px solid ;position: relative;text-align: center;'class='easyquestions3'><h4 style='position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);'>100</h4></div>
+            <br>
+            <br>
+            <div style='display: inline-block; width: 230px; height: 230px; background-color:rgb(110, 197, 226);border:2px solid ;position: relative;text-align: center;'class='medquestions3'><h4 style='position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);'>200</h4></div>
+            <br>
+            <br>
+            <div style='display: inline-block; width: 230px; height: 230px; background-color:rgb(110, 197, 226);border:2px solid ;position: relative;text-align: center;'class='hardquestions3'><h4 style='position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);'>300</h4>></div>
+        </div>
+    </div>
+</body>
+</html>
