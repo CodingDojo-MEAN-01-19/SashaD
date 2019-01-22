@@ -30,7 +30,7 @@
                             // next check if the radio button that is clicked is the one with the correct answer
                             $("radio").click(function(){
                                 if($('input[name="${answers[content]}"]:checked').val() == correctAnswer[content].val()){
-                                    Score.correct = Score.correct + 100;
+                                    Score.correct = (Score.correct + 100);
                                     console.log(Score.correct);
                                     $(".easyquestions1").empty();
                                 }
