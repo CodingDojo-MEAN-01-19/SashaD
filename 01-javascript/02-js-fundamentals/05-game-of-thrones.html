@@ -22,18 +22,19 @@
         $(document).ready(function(){
             alert("It runs");
             $("#baratheon").click(function(){
+                $(".housedetails").empty().append("HI, you can see that the append works!").append('<br>');
                 //alert("The first photo click works")
                 $.get("https://anapioficeandfire.com/api/houses/17", function(data) {     
                     console.log(data); 
                     let houseInfo = data.results;
                     for(let index in info) {
                         let name = houseInfo[index].name;
-                        $(".housedetails").empty().append("HI").append('<br>');
+                        $(".housedetails").empty().append("HI, you can see that the append works!").append('<br>');
                     };
                 });
-                $(".housedetails").empty().append("HI").append('<br>');
+                
             });
-            $(".two").click(function(){
+            $("#lannister").click(function(){
                 alert("The second photo click works")
                 $.get("https://anapioficeandfire.com/api/houses/362", function(data){
                     console.log(data)
@@ -44,7 +45,7 @@
                     }
                 });
             });
-            $(".three").click(function(){
+            $("#stark").click(function(){
                 alert("The third photo click works")
                 $.get("https://anapioficeandfire.com/api/houses/362", function(data){
                     console.log(data)
@@ -55,7 +56,7 @@
                     }
                 });
             });
-            $(".four").click(function(){
+            $("#targaryen").click(function(){
                 alert("The fourth photo click works")
                 $.get("https://anapioficeandfire.com/api/houses/362", function(data){
                     console.log(data)
