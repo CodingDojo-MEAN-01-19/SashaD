@@ -2,33 +2,34 @@
 <html>
 <head>
     <title>Game of Thrones</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
-        fieldset {
-            border: 2px solid #000;
-            width: 80%;
-            margin-left: 10%;
-            margin-right: 10%;
-        }
-        div .houses{
-            width: 100%;
-        }
-        .houses img{
-            width: 20%;
-            display: inline-block;
-        }
-    </style>
+            fieldset {
+                border: 2px solid #000;
+                width: 80%;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            div .houses{
+                width: 100%;
+            }
+            .houses img{
+                width: 20%;
+                display: inline-block;
+            }
+        </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            alert("It runs")
+            alert("It runs");
             $("#baratheon").click(function(){
                 //alert("The first photo click works")
-                $.get("https://anapioficeandfire.com/api/houses/362", function(data){     
+                $.get("https://anapioficeandfire.com/api/houses/17", function(data) {     
+                    console.log(data); 
                     let houseInfo = data.results;
                     for(let index in info) {
                         let name = houseInfo[index].name;
                         $(".housedetails").empty().append("HI").append('<br>');
-                    }
+                    };
                 });
                 $(".housedetails").empty().append("HI").append('<br>');
             });
