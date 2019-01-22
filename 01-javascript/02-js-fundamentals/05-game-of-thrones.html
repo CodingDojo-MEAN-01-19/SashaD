@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Game of Thrones</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         fieldset {
@@ -20,7 +21,7 @@
     <script>
         $(document).ready(function(){
             alert("It runs")
-            $(".one").click(function(){
+            $("#baratheon").click(function(){
                 //alert("The first photo click works")
                 $.get("https://anapioficeandfire.com/api/houses/362", function(data){     
                     let houseInfo = data.results;
@@ -69,10 +70,10 @@
 </head>
 <body>
     <div class="houses">
-        <img class="one" src="gameofthrones/baratheon.png" alt="House Baratheon">
-        <img class="two" src="gameofthrones/lannister.jpg" alt="House Lannister">
-        <img class="three" src="gameofthrones/stark.jpg" alt="House Stark">
-        <img class="four" src="gameofthrones/targaryen.jpg" alt="House Targaryen">
+        <img  id="baratheon" src="gameofthrones/baratheon.png" alt="House Baratheon">
+        <img  id="lannister" src="gameofthrones/lannister.jpg" alt="House Lannister">
+        <img  id="stark" src="gameofthrones/stark.jpg" alt="House Stark">
+        <img  id="targaryen" src="gameofthrones/targaryen.jpg" alt="House Targaryen">
     </div>
     <fieldset>
         <legend>House Details</legend>
