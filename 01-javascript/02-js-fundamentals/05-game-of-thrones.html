@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
     <title>Game of Thrones</title>
     <style>
             fieldset {
@@ -22,49 +23,49 @@
         $(document).ready(function(){
             alert("It runs");
             $("#baratheon").click(function(){
-                $(".housedetails").empty().append("HI, you can see that the append works!").append('<br>');
                 //alert("The first photo click works")
                 $.get("https://anapioficeandfire.com/api/houses/17", function(data) {     
-                    console.log(data); 
-                    let houseInfo = data.results;
-                    for(let index in info) {
-                        let name = houseInfo[index].name;
-                        $(".housedetails").empty().append("HI, you can see that the append works!").append('<br>');
-                    };
+                    //console.log(data);
+                     console.log(data.name);
+                     let houseName = data.name;
+                     let houseWords = data.words;
+                     let houseTitles = data.titles;
+                     $(".housedetails").empty().append("Name: " + houseName).append('<br>').append('<br>').append("Words: " + houseWords).append('<br>').append('<br>').append("Titles: " + houseTitles).append('<br>');
+                    
                 });
-                
             });
             $("#lannister").click(function(){
-                alert("The second photo click works")
-                $.get("https://anapioficeandfire.com/api/houses/362", function(data){
-                    console.log(data)
-                    let houseInfo = data.results;
-                    for(let index in info) {
-                        let name = houseInfo[index].name;
-                        $(".housedetails").empty().append("HI").append('<br>');
-                    }
+                //alert("The second photo click works")
+                $.get("https://anapioficeandfire.com/api/houses/229", function(data) {     
+                    //console.log(data);
+                     console.log(data.name);
+                     let houseName = data.name;
+                     let houseWords = data.words;
+                     let houseTitles = data.titles;
+                     $(".housedetails").empty().append("Name: " + houseName).append('<br>').append('<br>').append("Words: " + houseWords).append('<br>').append('<br>').append("Titles: " + houseTitles).append('<br>');
                 });
             });
             $("#stark").click(function(){
                 alert("The third photo click works")
-                $.get("https://anapioficeandfire.com/api/houses/362", function(data){
-                    console.log(data)
-                    let houseInfo = data.results;
-                    for(let index in info) {
-                        let name = houseInfo[index].name;
-                        $(".housedetails").empty().append("HI").append('<br>');
-                    }
+                $.get("https://anapioficeandfire.com/api/houses/362", function(data) {     
+                    console.log(data);
+                     console.log(data.name);
+                     let houseName = data.name;
+                     let houseWords = data.words;
+                     let houseTitles = data.titles;
+                     $(".housedetails").empty().append("Name: " + houseName).append('<br>').append('<br>').append("Words: " + houseWords).append('<br>').append('<br>').append("Titles: " + houseTitles).append('<br>');
                 });
             });
             $("#targaryen").click(function(){
-                alert("The fourth photo click works")
-                $.get("https://anapioficeandfire.com/api/houses/362", function(data){
-                    console.log(data)
-                    let houseInfo = data.results;
-                    for(let index in info) {
-                        let name = houseInfo[index].name;
-                        $(".housedetails").empty().append("HI").append('<br>');
-                    }
+                //alert("The fourth photo click works")
+                $.get("https://anapioficeandfire.com/api/houses/378", function(data) {     
+                    //console.log(data);
+                     console.log(data.name);
+                     let houseName = data.name;
+                     let houseWords = data.words;
+                     let houseTitles = data.titles;
+                     $(".housedetails").empty().append("Name: " + houseName).append('<br>').append('<br>').append("Words: " + houseWords).append('<br>').append('<br>').append("Titles: " + houseTitles).append('<br>');
+                    
                 });
             });
         });
@@ -79,12 +80,8 @@
     </div>
     <fieldset>
         <legend>House Details</legend>
-        <div class="housedetails"></div>
-        <p class="words"></p>
-        <p class="titles"></p>
+        <div class="housedetails">
+        </div>
     </fieldset> 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
