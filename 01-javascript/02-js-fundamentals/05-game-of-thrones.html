@@ -14,7 +14,8 @@
                 width: 100%;
             }
             .houses img{
-                width: 20%;
+                width: 24%;
+                height: 200px;
                 display: inline-block;
             }
         </style>
@@ -46,9 +47,8 @@
                 });
             });
             $("#stark").click(function(){
-                alert("The third photo click works")
                 $.get("https://anapioficeandfire.com/api/houses/362", function(data) {     
-                    console.log(data);
+                    //console.log(data);
                      console.log(data.name);
                      let houseName = data.name;
                      let houseWords = data.words;
