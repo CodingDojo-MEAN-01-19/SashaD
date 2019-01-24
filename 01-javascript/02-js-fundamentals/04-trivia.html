@@ -29,20 +29,21 @@
                             let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
                             $(".easyquestions1").append(radio);
                             // next check if the radio button that is clicked is the one with the correct answer
-                            $("radio").click(function(){
-                                if($('input[name="${answers[content]}"]:checked').val() == correctAnswer[content].val()){
-                                    Score.correct = (Score.correct + 100);
-                                    console.log(Score.correct);
-                                    $(".easyquestions1").empty();
-                                }
-                                else{
-                                    Score.incorrect++;
-                                };
-                            });
                         };
                     };
-                });
+                });  
             });
+            $("radio").click(function(){
+                            $(".easyquestions1").empty().append().append('<br>').append('<br>');
+                            /*if($('input[name="${answers[content]}"]:checked').val() == correctAnswer[content].val()){
+                                Score.correct = (Score.correct + 100);
+                                console.log(Score.correct);
+                                $(".easyquestions1").empty();
+                            }
+                            else{
+                                Score.incorrect++;
+                            };*/
+                        });
             $(".medquestions1").click(function(){
                 $.get("https://opentdb.com/api.php?amount=1&category=17&difficulty=medium", function(data){
                     console.log(data)
