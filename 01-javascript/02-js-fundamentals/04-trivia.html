@@ -29,19 +29,6 @@
                             let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
                             $(".easyquestions1").append(radio);
                             // next check if the radio button that is clicked is the one with the correct answer
-<<<<<<< HEAD
-                            $("radio").click(function(){
-                                if($('input[name="${answers[content]}"]:checked').val() == correctAnswer[content].val()){
-                                    Score.correct = (Score.correct + 100);
-                                    console.log(Score.correct);
-                                    $(".easyquestions1").empty();
-                                }
-                                else{
-                                    Score.incorrect++;
-                                };
-                            });
-=======
->>>>>>> 2226a37204125ccabc094f47da2345aec5cbc165
                         };
                     };
                 });  

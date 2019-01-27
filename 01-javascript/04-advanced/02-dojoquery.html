@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Dojo Query</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   
+</head>
+<body>
+    <h2 id="clickId">You can click on me!</h2>
+    <h2 id="hoverId">You can hover over me!</h2>
+    <script>
+        function $Dojo(id){
+            this.myId = document.getElementById(id);
+            this.click = function(callback){
+                this.myId.addEventListener("click", callback);
+            };
+            this.hover = function(hoverin, hoverout){
+                this.myId.addEventListener("mouseover", hoverin);
+                this.myId.addEventListener("mouseout", hoverout);
+            };
+            return this;
+        }
+        $Dojo("clickId").click(function() { $('#clickId').append(" You clicked on me!") });
+        $Dojo("hoverId").hover(function() { $('#hoverId').append("<span> You are hovering over me now!</span>")}, function(){$('#hoverId').find('span:last').remove();
+        });
+        
+        // document.getElementById // (makes a DOMobject accessible to JavaScript) takes in one parameter which is the id for a particular element
+        // DOMobject.addEventListener //takes in 2 parameters 1) the event 2) the callback function (Note that this method must be run on an html element)
+        // //Also note that you will need to pay attention to the following built in events from the DOM
+        // DOMobject.click
+        // DOMobject.mouseover
+        // DOMobject.mouseout
+    </script> 
+</body>
+</html>
