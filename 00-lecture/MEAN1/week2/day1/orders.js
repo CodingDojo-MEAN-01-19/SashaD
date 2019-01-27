@@ -1,7 +1,8 @@
-function orderSupplies(item, callback) {
+function orderSupplies(item) {
   let warehouse; //undefined
   const deliveryTime = Math.random() * 3000;
 
+  new Promise(function(resolve, reject){})
   setTimeout(function() {
     warehouse = {
       paint: {
@@ -95,14 +96,6 @@ const brush = new Promise(function(resolve, reject){
 
 paint
   .then(function(item){
-    receivedItem(item);
-
-    return brush
-    .then(function(item){
-      receivedItem(item);
-    });
-  });
-  .catch(function(error){
-    console.log(error);
-  });
-
+    receivedItem(item):
+  })
+  .then(function)
