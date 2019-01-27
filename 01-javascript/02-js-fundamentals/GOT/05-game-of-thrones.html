@@ -1,39 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie-edge"></meta>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>GOT</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <style>
-        fieldset {
-            border: 2px solid #000;
-            width: 80%;
-            margin-left: 10%;
-            margin-right: 10%;
-        }
-        div .houses{
-            width: 100%;
-        }
-        .houses img{
-            width: 20%;
-            display: inline-block;
-        }
-    </style>
-    <script>
-        $(document).ready(function(){
-            $("img .one").click(function(){
-                $.get("https://anapioficeandfire.com/api/houses/362", function(data){
-                    console.log(data)
-                    let houseInfo = data.results;
-                    for(let index in info) {
-                        let name = houseInfo[index].name;
-                        $(".housedetails").empty().append("<p class='name'>name[content]</p>").append('<br>');
-                    }
-=======
 <html>
 <head>
     <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
@@ -101,7 +66,6 @@
                      let houseTitles = data.titles;
                      $(".housedetails").empty().append("Name: " + houseName).append('<br>').append('<br>').append("Words: " + houseWords).append('<br>').append('<br>').append("Titles: " + houseTitles).append('<br>');
                     
->>>>>>> 2226a37204125ccabc094f47da2345aec5cbc165
                 });
             });
         });
@@ -109,23 +73,7 @@
 </head>
 <body>
     <div class="houses">
-<<<<<<< HEAD
-        <img class="one" src="gameofthrones/baratheon.png" alt="House Baratheon">
-        <img class="two" src="gameofthrones/lannister.jpg" alt="House Lannister">
-        <img class="three" src="gameofthrones/stark.jpg" alt="House Stark">
-        <img class="four" src="gameofthrones/targaryen.jpg" alt="House Targaryen">
-    </div>
-    <fieldset>
-        <legend>House Details</legend>
-        <div class="housedetails"></div>
-        <p class="words"></p>
-        <p class="titles"></p>
-    </fieldset> 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-=======
-        <img  id="baratheon" src="g" alt="House Baratheon">
+        <img  id="baratheon" src="gameofthrones/baratheon.png" alt="House Baratheon">
         <img  id="lannister" src="gameofthrones/lannister.jpg" alt="House Lannister">
         <img  id="stark" src="gameofthrones/stark.jpg" alt="House Stark">
         <img  id="targaryen" src="gameofthrones/targaryen.jpg" alt="House Targaryen">
@@ -135,6 +83,5 @@
         <div class="housedetails">
         </div>
     </fieldset> 
->>>>>>> 2226a37204125ccabc094f47da2345aec5cbc165
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
 <!--There has got to be a better way to loop through the data and then separate it by category and difficulty-->
 <!--Below there is nothing checking the answers yet or keeping the page from loading more than one question at a time-->
 <!--Also need to find a way after checking if the selected answer is right to then add points to total acquired points-->
@@ -28,6 +29,7 @@
                             let radio = `<input type="radio" name="${answers[content]}" value="${answers[content]}">${answers[content]}<br>`
                             $(".easyquestions1").append(radio);
                             // next check if the radio button that is clicked is the one with the correct answer
+<<<<<<< HEAD
                             $("radio").click(function(){
                                 if($('input[name="${answers[content]}"]:checked').val() == correctAnswer[content].val()){
                                     Score.correct = (Score.correct + 100);
@@ -38,10 +40,23 @@
                                     Score.incorrect++;
                                 };
                             });
+=======
+>>>>>>> 2226a37204125ccabc094f47da2345aec5cbc165
                         };
                     };
-                });
+                });  
             });
+            $("radio").click(function(){
+                            $(".easyquestions1").empty().append().append('<br>').append('<br>');
+                            /*if($('input[name="${answers[content]}"]:checked').val() == correctAnswer[content].val()){
+                                Score.correct = (Score.correct + 100);
+                                console.log(Score.correct);
+                                $(".easyquestions1").empty();
+                            }
+                            else{
+                                Score.incorrect++;
+                            };*/
+                        });
             $(".medquestions1").click(function(){
                 $.get("https://opentdb.com/api.php?amount=1&category=17&difficulty=medium", function(data){
                     console.log(data)
