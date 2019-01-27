@@ -1,4 +1,5 @@
 //Can we make this into a method of an object?
+//Still need to take another look and use the each function in all the _ funcitons
 function each(arr, callback) {
     // loop through the array
     for(var i = 0; i < arr.length; i++) {
