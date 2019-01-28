@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Ninja</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+   
+</head>
+<body>
+
+<h2>New Car to Add to the Cool cars</h2>
+
+<form action="">
+  Car Make:<br>
+  <input type="text" name="make" value="Mercedes">
+  <br>
+  Car model:<br>
+  <input type="text" name="model" value="GWagen">
+  <br>
+  <label for="carphoto">Choose a picture for the car!</label>
+
+  <input type="file"
+         id="carphoto" name="carphoto"
+         accept="image/png, image/jpeg">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+<br><br>
+<p>Go back? Click <a href="/cars">HERE</a></p>
+</body>
+</html>
