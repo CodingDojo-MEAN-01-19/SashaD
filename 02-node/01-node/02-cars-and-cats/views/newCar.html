@@ -2,7 +2,7 @@
 <html>
 <head>
     <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
-    <title>Ninja</title>
+    <title>newCar</title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
@@ -13,17 +13,20 @@
 <h2>New Car to Add to the Cool cars</h2>
 
 <form action="">
-  Car Make:<br>
-  <input type="text" name="make" value="Mercedes">
+  <div class="form-group">
+    <label for="make">Car Make:</label>
+    <input type="text" class="form-control" id="make" value="Mercedes">
+  </div>
   <br>
-  Car model:<br>
-  <input type="text" name="model" value="GWagen">
+  <div class="form-group">
+    <label for="model">Car Model:</label>
+    <input type="text" class="form-control" id="model" value="GWagon">
+  </div>
   <br>
-  <label for="carphoto">Choose a picture for the car!</label>
-
-  <input type="file"
-         id="carphoto" name="carphoto"
-         accept="image/png, image/jpeg">
+  <div class="form-group">
+    <label for="car photo">Choose a picture for the car!</label>
+    <input type="file" id="carphoto" name="carphoto" accept="image/png, image/jpeg">
+  </div>
   <br><br>
   <input type="submit" value="Submit">
 </form> 
