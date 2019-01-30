@@ -18,7 +18,7 @@ app.get("/cuddles", function (request, response){
     name: 'Cuddles',
     food: "Spaghetti", 
     age: "3", 
-    sleeping_spots: ['under the bed', 'in a sunbeam']
+    sleeping_spots: ['under the bed', 'in a sunbeam', 'on the kitchen counter', 'under my owners desk']
   };
   response.render('details', {details: cat_info});
 })
@@ -28,7 +28,7 @@ app.get("/pippin", function (request, response){
     name: 'Pippin',
     food: "Fish", 
     age: "5", 
-    sleeping_spots: ['under the bed', 'on the fridge']
+    sleeping_spots: ['under the bed', 'on the fridge', 'behind the tv']
   };
   response.render('details', {details: cat_info});
 })
