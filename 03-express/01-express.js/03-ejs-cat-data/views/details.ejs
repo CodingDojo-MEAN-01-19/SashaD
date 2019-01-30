@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title><%= details.name %></title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap.css">
+   
+</head>
+<body>
+    <div id = "wrapper">
+        <div id="title"><h1 style="text-align: center; background-color: purple; color: white; padding: 10px;">Details page for <%= details.name %></h1></div>
+        <img style="border-radius: 50%; width: 40%; display: block; margin-left: auto; margin-right: auto;" src="../images/<%= details.name %>.jpg" alt="<%= details.name %> picture">
+        <div id="food"><h3 style="text-align: center; background-color: rgb(221, 94, 221); color: white; padding: 10px;">Favorite Food: <%= details.food %></h3></div>
+        <div id="age"><h3 style="text-align: center; background-color: rgb(177, 59, 177); color: white; padding: 10px;">Age: <%= details.age %></h3></div>
+        <div id="sleep" style="text-align: center; background-color: rgb(119, 39, 119); color: white; padding: 10px;">
+            <h3>Sleeping Spots:</h3>
+            <ul>
+                <% for (var x in details.sleeping_spots) { %>
+                    <li><h4><%= details.sleeping_spots[x]; %></h4></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
