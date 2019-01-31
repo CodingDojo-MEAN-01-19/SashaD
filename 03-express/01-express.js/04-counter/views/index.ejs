@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Counter</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.css">
+   
+</head>
+<body>
+    <div class = "wrapper">
+        <fieldset style="width: 50%; margin-left: auto; margin-right: auto;">
+            <legend style="text-align: center;"><h1>Counter</h1></legend>
+            <h3 style="text-align: center;"><%= count %></h3>
+            <button style="width: 45%; margin-right: 9%;" class="btn btn-outline-secondary" type="button"><a href="/add">Add Two To The Count</a></button>
+            <button style="width: 45%;"class="btn btn-outline-secondary" type="button"><a href="/delete">Delete The Count</a></button>
+        </fieldset>
+        
+    </div>
+</body>
+</html>
