@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <!--Try to make this assignment look nice as well as work... right after I get back from work.-->
+    <title>Star Wars Wiki</title>
+    
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script>
+    $(document).ready(function(){
+        $('#peopleBtn').click(function(){
+            // let's make the request to our OWN server!
+            $.get('/people', function(data){
+                // log the data to be sure we have it before we dive into manipulating the DOM
+                console.log("got the data", data);
+            }, 'json');
+        });
+        $('#planetBtn').click(function(){
+            // let's make the request to our OWN server!
+            $.get('/people', function(data){
+                // log the data to be sure we have it before we dive into manipulating the DOM
+                console.log("got the data", data);
+            }, 'json');
+        });
+    });
+</script>
+<body>
+    <div id="page" style="background-image: url(../images/starwarsback.jpg);">
+        <div style="width: 60%; margin-left: auto; margin-right: auto;"class="wrapper">
+            <div style="text-align: center;" class="row">
+                <img src="../images/starwarswiki.png">
+            </div>
+            <div style="text-align: center;" class="row">
+                <h3 style="color: yellow;">What would you like to know more about?</h3>
+            </div>
+            <div class="row">
+                <button id="peopleBtn" style="width: 30%; margin-right: 39%;" class="btn btn-outline-secondary">People</button>
+                <button id="planetBtn" style="width: 30%;" class="btn btn-outline-secondary">Planets</button>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div id="apicontent" style="background-color: antiquewhite; opacity: 0.5;">
+                    HI!
+                    <br>
+                    can you still see 
+                    <br>
+                    now
+                    <br>
+                    now
+                    <br>
+                    now
+                    <br>
+                    now
+                    <br>
+                    now
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <a href="" style="width: 10%; font-size: 16px;">Previous 10</a>
+                <a href="" style="width: 10%; margin-left: 30%; margin-right: 30%; font-size: 16px;">Get all 61 planets</a>
+                <a href="" style="width: 10%; font-size: 16px;">Next 10</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
