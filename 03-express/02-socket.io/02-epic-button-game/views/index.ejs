@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Survey Form with Sockets</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.css">
+   
+    <script>
+        $(document).ready(function (){
+    
+            var socket = io.connect(); //1
+    
+            socket.on('epic_update', function (data) { //4
+                $('#count').empty();
+                console.log(data.epic_val)
+                $('#count').text(data.epic_val)
+            });
+            $('#epicBtn').click(function(){
+                socket.emit('epic');
+            });
+            $('#emptyCount').click(function(e){
+                socket.emit('empty');
+            });
+         });
+    </script>
+</head>
+<body>
+    <div class="wrapper" style="text-align: center;">
+        <h1>The button has been pushed <span id="count">0</span> times(s)</h1>
+        <h4>Push the button to update the count!</h4>
+        <div >
+            <button id="epicBtn" style="background-color: rgb(57, 57, 196); color: white; padding: 15px; margin-top: 5px; border-radius: 10px;"><h1>Push the epic button</h1></button>
+        </div>
+        <button id="emptyCount" style="background-color: red; color: white; box-shadow: 2px 5px #888888; border-radius: 5px; position: absolute; right: 0; bottom: 0; margin: 20px;">Reset Count</button>
+    </div>
+</body>
+</html>
