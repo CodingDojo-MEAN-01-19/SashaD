@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Survey Form with Sockets</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.css">
+   
+    <script>
+        $(document).ready(function (){
+    
+            var socket = io.connect(); //1
+    
+            socket.on('newRandomNum', function (number) { //4
+                $('#success').append("Here is the random number: ").append("<br>").append(number).append("<br>");
+            });
+            socket.on('formSent', function(data){
+                $('#success').append("Here is the form data: ").append("<br>").append(data.name).append("<br>").append(data.location).append("<br>").append(data.language).append("<br>").append(data.comment);
+            });
+            $('#submit').click(function(e){
+                e.preventDefault();
+                socket.emit('submit')
+                console.log("Form submitted!")
+                socket.emit('posting_form', {
+                    name: $('#name').val(),
+                    location: $('#location').val(),
+                    language: $('#language').val(),
+                    comment: $('#comment').val()
+                });
+            });
+         });
+    </script>
+</head>
+<body>
+    <div id="success" style="width: 50%; margin-left: auto; margin-right: auto; background-color: green; opacity: 0.7; border-radius: 5px; padding: 5px; color: white; font-size: 18px; text-align: center; margin-top: 5px;">
+    </div>
+    <form action="" id="survey_form">
+        <fieldset style="width: 50%; margin-left: auto; margin-right: auto;">
+            <legend style="text-align: center;"><h1>Survey Form</h1></legend>
+            <label for="name">Your Name: </label>
+            <input style="width: 100%" type="text" name="name" id="name"/>
+            <br>
+            <label for="location">Dojo Location: </label>
+            <select style="width: 100%" name="location" id="location">
+                <option value="Mountain View">Mountain View</option>
+                <option value="New York">New York</option>
+                <option value="Seattle">Seattle</option>
+            </select>
+            <br>
+            <label for="language">Favorite Language: </label>
+            <select style="width: 100%" name="language" id="language">
+                <option value="Javascript">Javascript</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+            </select>
+            <br>
+            <label for="comment">Comment(optional): </label>
+            <textarea style="width: 100%" name="comment" rows="4" cols="50" id="comment"></textarea>
+            <br>
+            <input type="submit" value="Submit" id="submit">
+            <br>
+            <br>
+        </fieldset>
+    </form>
+</body>
+</html>
