@@ -23,7 +23,7 @@
                 //console.log("got the data", data);
                 $('#apicontent').empty();
                 for(let i in data.results) {
-                    $('#apicontent').append(data.results[i].name + '<br>');
+                    $('#apicontent').append(data.results[i].name + '<br>' + '<br>');
                 }
             }, 'json');
         });
@@ -34,7 +34,7 @@
                 //console.log("got the data", data);
                 $('#apicontent').empty();
                 for(let i in data.results) {
-                    $('#apicontent').append(data.results[i].name + '<br>');
+                    $('#apicontent').append(data.results[i].name + '<br>' + '<br>');
                 }
             }, 'json');
         });
@@ -45,7 +45,7 @@
                 //console.log("got the data", data);
                 $('#apicontent').empty();
                 for(let i in data.results) {
-                    $('#apicontent').append(data.results[i].name + '<br>');
+                    $('#apicontent').append(data.results[i].name + '<br>').append("<br>");
                 }
             }, 'json');
         });
@@ -56,25 +56,31 @@
                 //console.log("got the data", data);
                 $('#apicontent').empty();
                 for(let i in data.results) {
-                    $('#apicontent').append(data.results[i].name + '<br>');
+                    $('#apicontent').append(data.results[i].name + '<br>').append("<br>");
                 }
             }, 'json');
         });
         $('#all').click(function(){
             // let's make the request to our OWN server!
             $.get('/all', function(data){
+                console.log(data);
                 // log the data to be sure we have it before we dive into manipulating the DOM
-                console.log("got the data", data);
+                //console.log("got the data", allData);
                 $('#apicontent').empty();
-                for(let j in allData){
-                    for(let i in data.results) {
-                        $('#apicontent').append(allData[j].data.results[i].name + '<br>');
-                    }
+                for(let j in data){
+                    //for(let i in data.results) {
+                        $('#apicontent').append(data[j]).append("<br>").append("<br>");
+                   // }
                 } 
             }, 'json');
         });
     });
 </script>
+<style>
+    p{
+        padding: 15px;
+    }
+</style>
 <body>
     <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"class="wrapper">
         <div style="text-align: center;" class="row">
@@ -87,8 +93,8 @@
             <button id="peopleBtn" style="width: 30%; margin-right: 39%;" class="btn btn-outline-secondary">People</button>
             <button id="planetBtn" style="width: 30%;" class="btn btn-outline-secondary">Planets</button>
         </div>
-        <div class="row" style="margin-top: 10px; background-color: antiquewhite; opacity: 0.7; padding: 5px; height: 500px;">
-            <div id="apicontent" style="background-color: antiquewhite; opacity: 0.5;">
+        <div class="row" style="margin-top: 10px; background-color: antiquewhite; opacity: 0.7; padding: 5px; overflow-y: scroll; height: 500px;">
+            <div id="apicontent" style="font-size: 36px; margin: 5px;">
             </div>
         </div>
         <div class="row" style="margin-top:10px; text-align: center;">

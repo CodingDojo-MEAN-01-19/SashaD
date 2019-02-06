@@ -109,24 +109,56 @@ app.get('/prev', (req, res) => {
 });
 
 app.get('/all', (req, res) => {
-    var allData = [];
-    for(let i = 1; i <= req.session.count; i++){
-        axios.get('https://swapi.co/api' + req.session.category + i)
-        .then(data => {
-            // log the data before moving on!
-            console.log("got the data: ", data.data);
-            allData.push(data.data);
-            // res.send(data.data);
-            // rather than rendering, just send back the json data!
-            res.json(data.data);
-        })
-        .catch(error => {
-             // log the error before moving on!
-            console.log('The following errors were generated: ', error);
-            res.json(error);
-        })
+    let allData = [];
+    for(let i = 1; i <= req.session.count + 1; i++){
+        if (req.session.category == '/people/'){
+            if( i != 17) {
+                axios.get('https://swapi.co/api' + req.session.category + i + '/?format=json')
+                .then(data => {
+                    // log the data before moving on!
+                    //console.log("got the data: ", data.data);
+                    //console.log(data.data.name);
+                    allData.push(data.data.name);
+                    if(i === req.session.count){
+                        //console.log(allData);
+                        res.json(allData);
+                    }
+                    // console.log('First then', allData);
+                    // res.send(data.data);
+                    // rather than rendering, just send back the json data!
+                })
+                .catch(error => {
+                    // log the error before moving on!
+                    console.log('The following errors were generated: ', error.message);
+                    res.json(error);
+                })
+            }
+        }
+        else{
+            if( i != 62) {
+                axios.get('https://swapi.co/api' + req.session.category + i + '/?format=json')
+                .then(data => {
+                    // log the data before moving on!
+                    //console.log("got the data: ", data.data);
+                    //console.log(data.data.name);
+                    allData.push(data.data.name);
+                    if(i === req.session.count){
+                        //console.log(allData);
+                        res.json(allData);
+                    }
+                    // console.log('First then', allData);
+                    // res.send(data.data);
+                    // rather than rendering, just send back the json data!
+                })
+                .catch(error => {
+                    // log the error before moving on!
+                    console.log('The following errors were generated: ', error.message);
+                    res.json(error);
+                })
+            }
+        }
     }
-    return allData;
+    //console.log('outside of everything', allData);
 });
 
 
