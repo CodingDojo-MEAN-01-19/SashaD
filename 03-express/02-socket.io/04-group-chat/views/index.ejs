@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Group Chat</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.css">
+   
+    <script>
+        $(document).ready(function (){
+            var socket = io.connect(); //1
+    
+            socket.on('new_name', function (data) { //4
+                console.log(data.name)
+                $('#all_names').append("<br>").text(data.name).append("<br>")
+            });
+            $('#submit').click(function(e){
+                e.preventDefault();
+                //console.log(e)
+                socket.emit('name_submit', {name: $('#name').val()});
+            });
+            // $('#cancel').click(function(e){
+            //     socket.emit();
+            //not necessary as type=reset already resets the field
+            // });
+         });
+    </script>
+</head>
+<body>
+    <div id="wrapper" style="width: 60%; text-align: center; margin-left: auto; margin-right: auto; border: black solid 1px; padding: 5%; margin-top: 10px;">
+        <h4>The page at https://localhost says:</h4>
+        <form>
+            <label for="name">Your Name: </label>
+            <input style="width: 100%" type="text" name="name" id="name"/>
+            <div id="row">
+                <input type="submit" value="OK" id="submit">
+                <input type="reset" value="Cancel" id="cancel">
+            </div>
+        </form>
+    </div>
+    <div id="all_names" style="width: 60%; text-align: center; margin-left: auto; margin-right: auto; border: black solid 1px; padding: 5%; margin-top: 10px;">
+
+    </div>
+</body>
+</html>
