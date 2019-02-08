@@ -10,41 +10,56 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.css">
-   
+   <style>
+       #person {
+           width: 100px;
+           border: solid black 1px;
+            margin: 10px;
+           display: inline-block;
+           text-align: center;
+           border-radius: 5px;
+       }
+            #person h4{
+                background-color: grey;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                padding: 5px;
+                color: white;
+            }
+            #person p{
+                padding: 5px;
+            }
+       h1{
+           text-align: center;
+       }
+   </style>
     <script>
-        $(document).ready(function (){
-            var socket = io.connect(); //1
-    
-            socket.on('new_name', function (data) { //4
-                console.log(data.name)
-                $('#all_names').append("<br>").text(data.name).append("<br>")
+        $(document).ready(function(){
+
+            var socket = io.connect();
+            socket.on('connect', function () { 
+                var person = prompt("Please enter your name", "Harry Potter");
+                    if (person != null){
+                        socket.emit('new_person', person);
+                }
+            socket.on('person_sent', function(data){
+                console.log(data);
+                $('#people').append("<div id='person'>"+
+                    "<h4>" + data + "</h4>"
+                    + "<p>The message will be here</p>"
+                    + "</div>")
+            })
+            socket.on('disconnected', function() {
+                socket.emit('DelPerson', person);
             });
-            $('#submit').click(function(e){
-                e.preventDefault();
-                //console.log(e)
-                socket.emit('name_submit', {name: $('#name').val()});
-            });
-            // $('#cancel').click(function(e){
-            //     socket.emit();
-            //not necessary as type=reset already resets the field
-            // });
-         });
+
+    });
+        });
     </script>
 </head>
 <body>
-    <div id="wrapper" style="width: 60%; text-align: center; margin-left: auto; margin-right: auto; border: black solid 1px; padding: 5%; margin-top: 10px;">
-        <h4>The page at https://localhost says:</h4>
-        <form>
-            <label for="name">Your Name: </label>
-            <input style="width: 100%" type="text" name="name" id="name"/>
-            <div id="row">
-                <input type="submit" value="OK" id="submit">
-                <input type="reset" value="Cancel" id="cancel">
-            </div>
-        </form>
-    </div>
-    <div id="all_names" style="width: 60%; text-align: center; margin-left: auto; margin-right: auto; border: black solid 1px; padding: 5%; margin-top: 10px;">
-
+    <h1> Message Board </h1>
+    <div id="people">
     </div>
 </body>
 </html>
