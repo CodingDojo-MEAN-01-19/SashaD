@@ -29,29 +29,32 @@
    </style>
     <script>
         $(document).ready(function(){
-            var person;
-
-            while(person == null || person == ""){
-                person = prompt("Please enter your name", "Harry Potter");
-                document.cookie = person;
-            }
-            console.log(person);
-            var socket = io();
-            socket.emit('login', {person: person});
-
-            socket.on('msg_update', function(data) {
-                $('#msg_board').append("<p>"+data.msg+"</p>");
-            });
-            socket.on('init_board', function(data){
-                for(msg of data.all_messages) {
-                    $('#msg_board').append("<p>"+msg+"</p>");
+            socket = io.connect(function(){
+                var person;
+                while(person == null || person == ""){
+                    person = prompt("Please enter your name", "Harry Potter");
                 }
-            });
-            $('#send').click(function() {
-                console.log($('#message').val());
-                socket.emit('send', {msg: $('#message').val()});
-                $('#message_box').val("");
-            });
+                console.log(person);
+                var socket = io();
+                socket.emit('login', {person: person});
+
+                socket.on('msg_update', function(data) {
+                    $('#msg_board').append("<p>"+data.msg+"</p>");
+                });
+                socket.on('init_board', function(data){
+                    for(msg of data.all_messages) {
+                        $('#msg_board').append("<p>"+msg+"</p>");
+                    }
+                });
+                $('#send').click(function() {
+                    console.log($('#message').val());
+                    socket.emit('send', {msg: $('#message').val()});
+                    $('#message_box').val("");
+                });
+                socket.on("disconnect", function(person){
+                    console.log("client disconnected from server");
+                });
+            }); //1
         });
 </script>
 </head>

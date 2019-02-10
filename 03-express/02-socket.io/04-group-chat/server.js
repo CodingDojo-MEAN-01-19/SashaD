@@ -1,11 +1,10 @@
 var express = require("express");
-const path = require('path');
-var session = require('express-session');
+var app = express();
 var parser = require('body-parser');
-const io = require('socket.io'),
-  connect = require('connect');
-
-var app = express().connect().use(connect.static('public')).listen(3000);
+var session = require('express-session');
+const server = app.listen(1999);
+const io = require('socket.io')(server);
+const path = require('path');
 
 
 app.use(express.static(__dirname + "/static"));
@@ -28,23 +27,25 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   socket.on('login', function(data){
-      users.push = data.person;
-      console.log(data.person);
-      socket.emit('init_board', {all_messages: all_messages});
-      socket.once('disconnect', function (){
-        var pos = users.indexOf(name);
-        if (pos >= 0){
-          users.splice(pos, 1);
-        };
-      });
-      socket.on('send', function(data){
-        console.log(data.msg)
-        all_messages.push(session.person + ": " + data.msg)
-        io.emit('msg_update', {msg: session.username + ": " + data.msg});
+    console.log(data);
+    users.push(data);
+    console.log(data.person);
+    let current_person = data.person;
+    socket.emit('current_person', {current_person: current_person});
+    socket.emit('init_board', {all_messages: all_messages});
+    socket.on('send', function(data){
+      console.log(data.msg);
+      console.log(current_person);
+      all_messages.push(current_person + ": " + data.msg)
+      io.emit('msg_update', {msg: current_person + ": " + data.msg});
+    });
+    socket.on('disconnect', function (person){  
+      var pos = users.indexOf(person);
+      if (pos >= 0){
+        users.splice(pos, 1);
+      };
     });
   });
-
-  
 });
 
 console.log("Listening on port " + JSON.stringify(server['_connectionKey']))
