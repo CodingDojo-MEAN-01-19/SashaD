@@ -11,55 +11,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.css">
    <style>
-       #person {
-           width: 100px;
+       #wrapper{
+           align-content: center;
+           width: 80%;
+           height: auto;
+           margin-left: auto;
+           margin-right: auto;
+           text-align: center;
+       }
+       #msg_board{
+           width: 100%;
+           height: 500px;
+           overflow-y: scroll;
            border: solid black 1px;
-            margin: 10px;
-           display: inline-block;
-           text-align: center;
-           border-radius: 5px;
        }
-            #person h4{
-                background-color: grey;
-                margin-top: 0px;
-                margin-bottom: 0px;
-                padding: 5px;
-                color: white;
-            }
-            #person p{
-                padding: 5px;
-            }
-       h1{
-           text-align: center;
-       }
+
    </style>
     <script>
         $(document).ready(function(){
+            var person;
 
-            var socket = io.connect();
-            socket.on('connect', function () { 
-                var person = prompt("Please enter your name", "Harry Potter");
-                    if (person != null){
-                        socket.emit('new_person', person);
-                }
-            socket.on('person_sent', function(data){
-                console.log(data);
-                $('#people').append("<div id='person'>"+
-                    "<h4>" + data + "</h4>"
-                    + "<p>The message will be here</p>"
-                    + "</div>")
-            })
-            socket.on('disconnected', function() {
-                socket.emit('DelPerson', person);
+            while(person == null || person == ""){
+                person = prompt("Please enter your name", "Harry Potter");
+                document.cookie = person;
+            }
+            console.log(person);
+            var socket = io();
+            socket.emit('login', {person: person});
+
+            socket.on('msg_update', function(data) {
+                $('#msg_board').append("<p>"+data.msg+"</p>");
             });
-
-    });
+            socket.on('init_board', function(data){
+                for(msg of data.all_messages) {
+                    $('#msg_board').append("<p>"+msg+"</p>");
+                }
+            });
+            $('#send').click(function() {
+                console.log($('#message').val());
+                socket.emit('send', {msg: $('#message').val()});
+                $('#message_box').val("");
+            });
         });
-    </script>
+</script>
 </head>
 <body>
-    <h1> Message Board </h1>
-    <div id="people">
+    <div id="wrapper">
+        <h1> Conversation Board </h1>
+        <div id="msg_board">
+        </div>
+        <form id="msg_form">
+            <br>
+            <div class="form-group">
+                <label style="text-align: left;" for="message">Message:</label>
+                <input style="width: 90%; margin-right: 10px; display: inline-block;" id='message' type='text' name='message'>
+                <button style="margin-left: 80%;" class="btn btn-default" id="send">Send</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>
