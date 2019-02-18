@@ -11,11 +11,25 @@
     <form action="/users" method="post">
         <fieldset style="width: 50%; margin-left: auto; margin-right: auto;">
             <legend style="text-align: center;"><h1>Mongoose Form</h1></legend>
-            <label for="name">Your Name: </label>
-            <input style="width: 100%" type="text" name="name" id="name"/>
+            <!-- tip to easily see objects printed in full instead of [object Object] -->
+            <!-- JSON.stringify(messages) --> 
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.registration) { %>
+                <% for (var x of messages.registration) { %>
+                <h4 style="color: red;"><%= x %></h4>
+                <% } %>
+            <% } %>
+            <label for="first_name">First Name: </label>
+            <input style="width: 100%" type="text" name="first_name" id="first_name"/>
+            <br>
+            <label for="last_name">Last Name: </label>
+            <input style="width: 100%" type="text" name="last_name" id="last_name"/>
             <br>
             <label for="age">Your Age: </label>
             <input style="width: 100%" type="number" name="age" id="age"/>
+            <br>
+            <label for="email">Your Email: </label>
+            <input style="width: 100%" type="email" name="email" id="email"/>
             <br>
             <br>
             <input type="submit" value="Submit">
@@ -26,16 +40,19 @@
         <legend style="text-align: center;"><h1>All the Users</h1></legend>
         <ul>
             <% users.forEach(function(user){ %>
-              <li><%= user.name %></li>
-              <ul><li><%= user.age %></li></ul>
+              <li><%= user.first_name %> <%= user.last_name %></li>
+              <ul>
+                  <li><%= user.age %></li>
+                  <li><%= user.email %></li>
+            </ul>
             <% })%>
           </ul>
     </fieldset>
     <form action="/users/delete" method="post">
         <fieldset style="width: 50%; margin-left: auto; margin-right: auto;">
             <legend style="text-align: center;"><h1>Delete User Form</h1></legend>
-            <label for="name">User Name: </label>
-            <input style="width: 100%" type="text" name="name" id="name"/>
+            <label for="first_name">First Name: </label>
+            <input style="width: 100%" type="text" name="first_name" id="first_name"/>
             <br>
             <br>
             <input type="submit" value="Submit">
@@ -54,14 +71,25 @@
     <form action="/users/edit" method="post">
         <fieldset style="width: 50%; margin-left: auto; margin-right: auto;">
             <legend style="text-align: center;"><h1>Edit User Form</h1></legend>
-            <label for="name">User Name: </label>
-            <input style="width: 100%" type="text" name="name" id="name"/>
+            <% if(messages.editerror) { %>
+                <% for (var x of messages.editerror) { %>
+                <h4 style="color: red;"><%= x %></h4>
+                <% } %>
+            <% } %>
+            <label for="name">User First Name: </label>
+            <input style="width: 100%" type="text" name="first_name" id="first_name"/>
             <br>
-            <label for="name_change">Change the User's Name: </label>
-            <input style="width: 100%" type="text" name="name_change" id="name_change"/>
+            <label for="first_name_change">Change the User's First Name: </label>
+            <input style="width: 100%" type="text" name="first_name_change" id="first_name_change"/>
+            <br>
+            <label for="last_name_change">Change the User's Last Name: </label>
+            <input style="width: 100%" type="text" name="last_name_change" id="last_name_change"/>
             <br>
             <label for="age">User Age: </label>
             <input style="width: 100%" type="number" name="age" id="age"/>
+            <br>
+            <label for="email">User Email: </label>
+            <input style="width: 100%" type="email" name="email" id="email"/>
             <br>
             <br>
             <input type="submit" value="Edit">
