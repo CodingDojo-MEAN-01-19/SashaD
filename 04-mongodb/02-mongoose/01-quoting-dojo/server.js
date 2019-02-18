@@ -50,7 +50,7 @@ app.get('/', function(req, res) {
 })
 // Go to the quotes page
 app.get('/view/quotes', function(req, res){
-    Quote.find({}, function(err, quotes){
+    Quote.find({}).sort('-date').exec(function(err, quotes){
         if(err){
             console.log('something went wrong');
         } else {
