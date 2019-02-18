@@ -54,6 +54,73 @@ app.post('/users', function(req, res) {
         res.redirect('/');
     })
 })
+app.post('/users', function(req, res) {
+    console.log("POST DATA ****** ", req.body);
+    // This is where we would add the user from req.body to the database.
+    var user = new User({name: req.body.name, age: req.body.age});
+    // Trey to save that new user to the database (this is the method that actually inserts in the db) and run a callback function with an error (if any) from the operation.
+    user.save(function(err){
+        //if there is an error console.log that something went wrong!
+        if(err){
+            console.log('something went wrong');
+        } else {
+            console.log('successfully added a user!');
+        }
+        res.redirect('/');
+    })
+})
+app.post('/users/delete', function(req, res) {
+    console.log("POST DATA To Delete ****** ", req.body);
+    // This is where we would remove the user from req.body from the database.
+    console.log(req.body.name)
+    // Try to remove that user from the database 
+    // ...delete 1 record by a certain key/value.
+    User.remove({name: req.body.name}, function(err){
+        // This code will run when the DB has attempted to remove one matching record to {_id: 'insert record unique id here'}
+        if(err){
+            console.log('something went wrong');
+        } else {
+            console.log('successfully REMOVED the user: ' + req.body.name);
+        }
+        res.redirect('/');
+    })
+})
+app.post('/users/delete/all', function(req, res) {
+    console.log("ALL USERS SUCCESSFULLY DELETED ");
+    // This is where we would remove the user from req.body from the database.
+    // Try to remove that user from the database 
+   // ...delete all records of the User Model
+    User.remove({}, function(err){
+        // This code will run when the DB has attempted to remove all matching records to {}
+        if(err){
+            console.log('something went wrong');
+        } else {
+            console.log('successfully REMOVED ALL USERS');
+        }
+        res.redirect('/');
+    })
+})
+app.post('/users/edit', function(req, res) {
+    console.log("POST DATA To Edit ****** ", req.body);
+    // This is where we would remove the user from req.body from the database.
+    console.log(req.body.name);
+    console.log(req.body.age);
+    // Try to remove that user from the database 
+    // ...delete 1 record by a certain key/value.
+    User.findOne({name: req.body.name}, function(err, user){
+        // This code will run when the DB has attempted to remove one matching record to {_id: 'insert record unique id here'}
+        if(err){
+            console.log('something went wrong');
+        } else {
+            user.name = req.body.name_change;
+            user.age = req.body.age;
+            user.save(function(err){
+                console.log('successfully EDITED the user: ' + req.body.name);
+            }) 
+        }
+        res.redirect('/');
+    })
+})
 // Setting our Server to Listen on Port: 8000
 app.listen(8000, function() {
     console.log("listening on port 8000");
