@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Quoting Dojo</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <fieldset style="width: 70%; margin-left: auto; margin-right: auto;">
+        <legend style="text-align: center;"><h1>Welcome to Quoting Dojo</h1></legend>
+        <form action="/quotes" method="post">
+            <!-- tip to easily see objects printed in full instead of [object Object] -->
+            <!-- JSON.stringify(messages) --> 
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.registration) { %>
+                <% for (var x of messages.registration) { %>
+                <h4 style="color: red;"><%= x %></h4>
+                <% } %>
+            <% } %>
+            <label for="name">Your Name: </label>
+            <input style="width: 100%" type="text" name="name" id="name"/>
+            <br>
+            <label for="quote">Your Quote: </label>
+            <textarea style="width: 100%; height: 100px;" name="quote" id="quote"></textarea>
+            <br>
+            <br>
+            <button style="background-image:linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 20px; border-radius: 5px; margin-right: 59%; font-size: 16px;" type="submit">Add the Quote!</button>
+            <a href="/view/quotes"><button style="background-image:linear-gradient(rgb(136, 220, 226), rgb(19, 128, 138)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;"><p>Skip to quotes!</p></button></a>
+        </form>
+    </fieldset>
+</body>
+</html>
