@@ -1,61 +1,76 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Group Chat Assignment</title>
-  <script type="text/javascript" src="/javascript/jquery.min.js"></script>
-  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function() {
-    var socket = io.connect();
-    var current_user;
-
-    var new_user = function() {
-      var name = prompt("Please enter your name to chat");
-      socket.emit("page_load", {user: name});
-    }
-
-    new_user();
-
-    socket.on("existing_user", function(data){
-      $("#error").html(data.error)
-      new_user();
-    })
-
-    socket.on("load_messages", function(data){
-      $("#error").html("") //resetting the error message
-      current_user = data.current_user;
-      var messages = data.messages;
-      var messageThread = "";
-
-      for (var i = 0; i < messages.length; i++){
-        messageThread += "<p>" + messages[i].name + ": " + messages[i].message + "</p>";
-      }
-
-      $("#message_board").append(messageThread);
-    })
-
-    $("#new_message").submit(function(){
-      socket.emit("new_message", {message: $("#message").val(), user: current_user})
-      return false;
-    })
-
-    socket.on("post_new_message", function(data) {
-      $("#message_board").append("<p>" + data.user + ": " + data.new_message + "</p>");
-    })
-  })
-
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Group Chat</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.css">
+   <style>
+       #wrapper{
+           align-content: center;
+           width: 80%;
+           height: auto;
+           margin-left: auto;
+           margin-right: auto;
+           text-align: center;
+       }
+       #msg_board{
+           width: 100%;
+           height: 500px;
+           overflow-y: scroll;
+           border: solid black 1px;
+       }
+   </style>
+    <script>
+        var person;
+        $(document).ready(function(event){
+            
+            var socket = io();
+            socket = io.connect();
+            if(person == null || person == ""){
+                person = prompt("Please enter your name", "Harry Potter");
+            }
+            console.log("Here is the first print " + person);
+            socket.emit('login', {person: person});
+            socket.on('msg_update', function(data) {
+                $('#msg_board').append("<p>"+data.msg+"</p>");
+            });
+            socket.on('init_board', function(data){
+                for(msg of data.all_messages) {
+                    $('#msg_board').append("<p>"+msg+"</p>");
+                }
+            });
+            $('#send').click(function() {
+                console.log($('#message').val());
+                socket.emit('send', {msg: $('#message').val()});
+                $('#message_box').val("");
+            });
+            event.preventDefault();
+            console.log("Here is the second print " + person);
+            // socket.on("disconnect", function(person){
+            //     console.log("client disconnected from server");
+            // });
+        });
+</script>
 </head>
 <body>
-  <div id="container">
-    <div id="error"></div>
-    <p>Conversation Board</p>
-    <div id="message_board"></div>
-    <form id="new_message">
-      <input type="text" id="message" placeholder="enter your message here">
-      <input type="submit" value="Send">
-    </form>
-  </div>
+    <div id="wrapper">
+        <h1> Conversation Board </h1>
+        <div id="msg_board">
+        </div>
+        <form id="msg_form">
+            <br>
+            <div class="form-group">
+                <label style="text-align: left;" for="message">Message:</label>
+                <input style="width: 90%; margin-right: 10px; display: inline-block;" id='message' type='text' name='message'>
+                <button style="margin-left: 80%;" class="btn btn-default" id="send">Send</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

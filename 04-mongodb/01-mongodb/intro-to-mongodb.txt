@@ -1,0 +1,63 @@
+1 
+> use my_first_db
+*********************************************************************************
+2 
+> db.createCollection(“students”)
+*********************************************************************************
+4
+> db.students.insert({name: "Camilla", home_state: "Washington", lucky_number: 1, birthday: {month: 02, day: 18, year: 1990}})
+> db.students.insert({name: "Trey", home_state: "California", lucky_number: 3, birthday: {month: 03, day: 20, year: 1990}})
+> db.students.insert({name: "Nina", home_state: "Washington", lucky_number: 10, birthday: {month: 5, day: 12, year: 1989}})
+> db.students.insert({name: "Sasha", home_state: "California", lucky_number: 7, birthday: {month: 7, day: 29, year: 1995}})
+> db.students.insert({name: "Austin", home_state: "California", lucky_number: 13, birthday: {month: 11, day: 16, year: 1991}})
+*********************************************************************************
+5
+> db.students.find().pretty()
+*********************************************************************************
+6
+> db.students.find({$or: [{home_state:”California”}, {home_state:”Washington”}]})
+*********************************************************************************
+7
+> db.students.find({lucky_number: {$gt: 3}}).pretty()
+> db.students.find({lucky_number: {$lte: 10}}).pretty()
+> db.students.find({$and: [{lucky_number: {$lte: 9}}, {lucky_number: {$gte: 1}}]})
+*********************************************************************************
+8
+> db.students.update({}, {$set: {'interests': ['coding', 'brunch', 'MongoDB']}},{multi:true})
+*********************************************************************************
+9
+> db.students.update({name:'Camilla'},{$push:{interests:{$each:['drawing','painting']}}})
+> db.students.update({name:'Trey'},{$push:{interests:{$each:['hiking','djing']}}})
+> db.students.update({name:’Nina’},{$push:{interests:{$each:[‘viola’,’horses’]}}})
+> db.students.update({name:’Sasha’},{$push:{interests:{$each:[‘dogs’,’biomedical sciences’]}}})
+> db.students.update({name:’Austin’},{$push:{interests:{$each:[‘guitar’,’metal music’]}}})
+*********************************************************************************
+10
+> db.students.update({name: “Trey”},{$push: {interests: “taxes”}})
+*********************************************************************************
+11
+> db.students.update({name: “Trey”},{$pull: {interests: “taxes”}})
+*********************************************************************************
+12
+> db.students.remove({$or: [{home_state:”California”}{home_state:”Washington”}]})
+*********************************************************************************
+13
+> db.students.remove({name: “Trey”})
+*********************************************************************************
+14
+> db.students.remove({lucky_number: {$gt:5}}, {justOne: true})
+*********************************************************************************
+15
+> db.students.update({},{$set: {“number_of_belts”: 0}},{multi:true})
+*********************************************************************************
+16
+> db.students.update({home_state: “Washington”}, {$inc: {number_of_belts: 1}},{multi: true})
+*********************************************************************************
+17
+> db.students.update({},{$rename: {“number_of_belts”:”belts_earned”}})
+*********************************************************************************
+18
+> db.students.update({},{$unset:{lucky_number:””}},{multi:true})
+*********************************************************************************
+19
+> db.students.update({}, {$currentDate: {updated_on:true}}, {multi:true})
