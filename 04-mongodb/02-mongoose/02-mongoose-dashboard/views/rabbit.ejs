@@ -15,7 +15,9 @@
         <h3>This bunny's favorite food is <%= rabbit.favorite_food %></h3>
         <a href="/"><button style="background-image: linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;"><p>Back</p></button></a>
         <a href="/rabbits/edit/<%= rabbit._id %>"><button style="background-image: linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;"><p>Edit This Bunny</p></button></a>
-        <a href="/rabbits/destroy/<%= rabbit._id %>"><button style="background-image: linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;"><p>Delete This Bunny?</p></button></a>
+        <form action="/rabbits/destroy/<%= rabbit._id %>" method="post">
+            <button style="background-image: linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;" type="submit"><p>Delete This Bunny?</p></button>
+        </form>
         <% }) %>
     </fieldset>
 </body>

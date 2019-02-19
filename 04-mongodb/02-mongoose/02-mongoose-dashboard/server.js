@@ -142,9 +142,9 @@ app.post('/rabbits/:id', function(req, res){
         }
     });
 });
-app.get('/rabbits/destroy/:id', function(req, res){
+app.post('/rabbits/destroy/:id', function(req, res){
     console.log(req.params.id);
-    Rabbit.deleteOne({_id: req.params.id}, function(err){
+    Rabbit.remove({_id: req.params.id}, function(err, result){
         if(err){
             console.log("something sent wrong");
         } else {
