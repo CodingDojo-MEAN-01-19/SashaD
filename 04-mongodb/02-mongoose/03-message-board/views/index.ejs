@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Message Board</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <form action="/message" method="post">
+        <fieldset style="width: 85%; margin-left: auto; margin-right: auto;">
+            <legend style="text-align: center;"><h1>Message Form</h1></legend>
+            <!-- tip to easily see objects printed in full instead of [object Object] -->
+            <!-- JSON.stringify(messages) --> 
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.registration) { %>
+                <% for (var x of messages.registration) { %>
+                <h4 style="color: red;"><%= x %></h4>
+                <% } %>
+            <% } %>
+            <label for="name">Name: </label>
+            <input style="width: 100%" type="text" name="name" id="name"/>
+            <br>
+            <label for="message">Your Message: </label>
+            <textarea style="width: 100%" rows="4" type="text" name="message" id="message"></textarea>
+            <br>
+            <br>
+            <input type="submit" value="Post message">
+            <br>
+        </fieldset>
+    </form>
+    <fieldset style="width: 85%; margin-left: auto; margin-right: auto;">
+        <legend style="text-align: center;"><h1>All the Messages</h1></legend>
+        <ul>
+                <% for(const message of messages) { %>
+                <h3>Name: <%= message.name %></h3>
+                <h3>Message: <%= message.content %></h3>
+                <% for (const comment of message._comments) { %>
+                    <h5><%="Name: " + comment.name %></h5>
+                    <h5><%="Comment: " + comment.content %></h5>
+                <% } %>
+                <ul>                              
+                    <form action="/comment/<%= message._id %>" method="post">
+                        <!-- tip to easily see objects printed in full instead of [object Object] -->
+                        <!-- JSON.stringify(messages) --> 
+                        <!-- based on the structure of your messages, determine how to display them -->
+                        <% if(messages.registration) { %>
+                            <% for (var x of messages.registration) { %>
+                            <h4 style="color: red;"><%= x %></h4>
+                            <% } %>
+                        <% } %>
+                        <li>
+                            <label for="name">Name: </label>
+                            <input style="width: 100%" type="text" name="name" id="name"/>
+                            <br>
+                        </li>
+                        <li>
+                            <label for="comment">Your Comment: </label>
+                            <textarea style="width: 100%" rows="4" type="text" name="comment" id="comment"></textarea>
+                            <br>
+                            <br>
+                            <input type="submit" value="Post comment">
+                            <br>
+                        </li>
+                    </form>
+                </ul>
+            <% }%>
+          </ul>
+    </fieldset>
+</body>
+</html>
