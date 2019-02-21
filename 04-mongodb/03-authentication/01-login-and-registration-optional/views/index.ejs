@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Login and Registration</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script language='javascript' type='text/javascript'>
+        function check(input) {
+            if (input.value != document.getElementById('password').value) {
+                input.setCustomValidity('Password Must be Matching.');
+            } else {
+                // input is valid -- reset the error message
+                input.setCustomValidity('');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 style="text-align: center;">Login And Registration</h1>
+    <form action="/registration" method="post" style="width: 45%; display: inline-block; margin-right: 9%;">
+        <fieldset >
+            <legend style="text-align: center;"><h1>Registration</h1></legend>
+            <!-- tip to easily see objects printed in full instead of [object Object] -->
+            <!-- JSON.stringify(messages) --> 
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.registration) { %>
+                <% for (var x of messages.registration) { %>
+                <h4 style="color: red;"><%= x %></h4>
+                <% } %>
+            <% } %>
+            <label for="first_name">First Name: </label>
+            <input style="width: 100%" type="text" name="first_name" id="first_name"/>
+            <br>
+            <label for="last_name">Last Name: </label>
+            <input style="width: 100%" type="text" name="last_name" id="last_name"/>
+            <br>
+            <label for="email">Your Email: </label>
+            <input style="width: 100%" type="email" name="email" id="email"/>
+            <br>
+            <label for="password">Password: </label>
+            <input style="width: 100%" type="password" name="password" id="password"/>
+            <br>
+            <label for="confirm_password">Confirm Password: </label>
+            <input style="width: 100%" type="password" name="confirm_password" id="confirm_password" oninput="check(this)" />
+            <br>
+            <br>
+            <input type="submit" value="Register">
+            <br>
+        </fieldset>
+    </form>
+    <form action="/login" method="post" style="width: 45%; display: inline-block; vertical-align: top;">
+        <fieldset>
+            <legend style="text-align: center;"><h1>Login</h1></legend>
+            <!-- tip to easily see objects printed in full instead of [object Object] -->
+            <!-- JSON.stringify(messages) --> 
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.login) { %>
+                <% for (var x of messages.login) { %>
+                <h4 style="color: red;"><%= x %></h4>
+                <% } %>
+            <% } %>
+            <label for="email">Your Email: </label>
+            <input style="width: 100%" type="email" name="email" id="email"/>
+            <br>
+            <label for="password">Password: </label>
+            <input style="width: 100%" type="password" name="password" id="password"/>
+            <br>
+            <br>
+            <input type="submit" value="Login">
+            <br>
+        </fieldset>
+    </form>
+</body>
+</html>
