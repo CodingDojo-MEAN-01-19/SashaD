@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Login and Registration</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1 style="text-align: center;">Secrets Dashboard</h1>
+    <h3 style="display: inline-block;">Hello <%= current_user[0].first_name %>!</h3> | <p style="display: inline-block;"><a href="/logout">Logout</a></p>
+    <fieldset>
+        <legend>Dojo Secrets</legend>
+        <table style="width: 90%; margin-right: auto; margin-left: auto;">
+                <tr>
+                    <th>Secrets</th>
+                    <th>Actions</th>
+                </tr>
+                <% for(var i = 0; i < users.length; i++){ %>
+                    <% for(const secret of secrets) { %>
+                        <tr>
+                            <td><a href="/secrets/<%= secret._id %>"><%= secret.content %></a></th>
+                            <% if(current_user._id == users[i]._id) { %>
+                                <td><a href="/secrets/<%= users[i].secrets[j]._id %>/delete">Delete</a></td>
+                            <% } %>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </table>
+        <form action="/secrets" method="post">
+            <fieldset style="width: 85%; margin-left: auto; margin-right: auto;">
+                <legend style="text-align: center;"><h1>Secret Form</h1></legend>
+                <label for="secret">Your Secret: </label>
+                <textarea style="width: 100%" rows="4" type="text" name="secret" id="secret"></textarea>
+                <br>
+                <br>
+                <input type="submit" value="Post secret">
+                <br>
+            </fieldset>
+        </form>
+        
+    </fieldset>
+</body>
+</html>

@@ -104,13 +104,14 @@ app.post('/login', function(req, res) {
                 req.flash('login', err.errors[key].message);
             }
             console.log('something went wrong');
+            req.flash('login', "A user with this email does not exist")
             res.redirect('/')
         } else {
             console.log('We found a user with email ' + user.email);
             bcrypt.compare(req.body.password, user.password, function(err, result){
                 if(result){
                     req.session.user_id = user._id;
-                    res.render('dashboard', {user: user});
+                    res.redirect('/dashboard');
                 }
                 else {
                     req.flash('login', "The email or password did not match our records!")
@@ -120,7 +121,33 @@ app.post('/login', function(req, res) {
         }
     })
 })
-
+app.get('/dashboard', function(req, res){
+    if(req.session.user_id){
+        User.findOne({email: req.body.email}, function(err, user){
+            console.log(req.body);
+            if(err){
+                for(var key in err.errors){
+                    req.flash('login', err.errors[key].message);
+                }
+                console.log('something went wrong');
+                req.flash('login', "A user with this email does not exist")
+                res.redirect('/')
+            } else {
+                console.log('We found a user with email ' + user.email);
+                bcrypt.compare(req.body.password, user.password, function(err, result){
+                    if(result){
+                        req.session.user_id = user._id;
+                        res.render('dashboard', {user: user});
+                    }
+                    else {
+                        req.flash('login', "The email or password did not match our records!")
+                        res.redirect('/');
+                    }
+                })
+            }
+        })
+    }
+})
 // Setting our Server to Listen on Port: 8000
 app.listen(8000, function() {
     console.log("listening on port 8000");

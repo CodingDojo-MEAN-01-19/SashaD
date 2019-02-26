@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Quoting Dojo Home</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <fieldset style="width: 70%; margin-left: auto; margin-right: auto; border:">
+        <legend style="text-align: center;"><h1>Here are some awesome quotes!</h1></legend>
+        <ul>
+            <% quotes.forEach(function(quote){ %>
+                <li style="color: grey; list-style-type: none;"> "<%= quote.quote %>"</li>
+                <ul>
+                    <li style="color: blue; list-style-type: none;"> -<%= quote.name %> at <%= quote.createdAt %></li>
+            </ul>
+            <% })%>
+            </ul>
+    </fieldset>
+</body>
+</html>
