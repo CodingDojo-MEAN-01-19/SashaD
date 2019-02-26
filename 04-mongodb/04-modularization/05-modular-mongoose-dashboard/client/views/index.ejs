@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Mongoose Dashboard</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <fieldset style="width: 80%; margin-left: auto; margin-right: auto;">
+        <legend style="text-align: center;"><h1>Bunny Dashboard</h1></legend>
+        <center><img style="border-radius: 30%; width: 80%; margin-left: auto; margin-right: auto;" src="../images/kissingbunnies.jpg"></center>
+        <ul>
+            <% rabbits.forEach(function(rabbit){ %>
+                <a href="/rabbits/<%= rabbit._id %>"><li style="color: rgb(116, 41, 99); list-style-type: none;"><h3><%= rabbit.name %></h3></li></a>
+            <% })%>
+        </ul>
+        <a href="/rabbits/new"><button style="background-image: linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;"><p>New Bunny</p></button></a>
+    </fieldset>
+</body>
+</html>

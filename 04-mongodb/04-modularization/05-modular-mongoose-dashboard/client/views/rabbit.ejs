@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Mongoose Dashboard</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <fieldset style="width: 80%; margin-left: auto; margin-right: auto;">
+        <% rabbits.forEach(function(rabbit){ %>
+        <legend style="text-align: center;"><h1><%= rabbit.name %></h1></legend>
+        <center><img style="border-radius: 30%; width: 80%; margin-left: auto; margin-right: auto;" src="../images/kissingbunnies.jpg"></center>
+        <h3>This bunny is <%= rabbit.age %> years old!</h3>
+        <h3>This bunny's favorite food is <%= rabbit.favorite_food %></h3>
+        <a href="/"><button style="background-image: linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;"><p>Back</p></button></a>
+        <a href="/rabbits/edit/<%= rabbit._id %>"><button style="background-image: linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;"><p>Edit This Bunny</p></button></a>
+        <form action="/rabbits/destroy/<%= rabbit._id %>" method="post">
+            <button style="background-image: linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;" type="submit"><p>Delete This Bunny?</p></button>
+        </form>
+        <% }) %>
+    </fieldset>
+</body>
+</html>

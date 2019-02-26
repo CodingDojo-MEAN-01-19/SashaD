@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Note to self... MAKE SURE YOU ONLY USE ONE SCRIPT TAG FOR JQUERY!-->
+    <title>Mongoose Dashboard</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <fieldset style="width: 80%; margin-left: auto; margin-right: auto;">
+        <legend style="text-align: center;"><h1>Add A New Bunny!</h1></legend>
+        <center><img style="border-radius: 30%; width: 80%; margin-left: auto; margin-right: auto;" src="../images/kissingbunnies.jpg"></center>
+        <form action="/rabbits" method="post">
+            <!-- tip to easily see objects printed in full instead of [object Object] -->
+            <!-- JSON.stringify(messages) --> 
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.registration) { %>
+                <% for (var x of messages.registration) { %>
+                <h4 style="color: red;"><%= x %></h4>
+                <% } %>
+            <% } %>
+            <label for="name">Your Name: </label>
+            <input style="width: 100%" type="text" name="name" id="name"/>
+            <br>
+            <label for="age">Your Age: </label>
+            <input style="width: 100%" type="number" name="age" id="age"/>
+            <br>
+            <label for="favorite_food">Your Favorite Food: </label>
+            <input style="width: 100%" type="text" name="favorite_food" id="favorite_food"/>
+            <br>
+            <br>
+            <button style="background-image:linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 20px; border-radius: 5px; margin-right: 59%; font-size: 16px;" type="submit">Add Bunny!</button>
+        </form>
+        <a href="/"><button style="background-image: linear-gradient(rgb(31, 207, 31), rgb(8, 85, 8)); color: white; width: 20%; padding: 5px; border-radius: 5px; font-size: 16px;"><p>Back to the Dashboard!</p></button></a>
+    </fieldset>
+</body>
+</html>
