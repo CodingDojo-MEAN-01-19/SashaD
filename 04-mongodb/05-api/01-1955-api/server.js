@@ -26,7 +26,7 @@ app.get('/', function(req, res){
         if (err){
             console.log("Returned error ", err);
             //respond w/ json
-            res.json({message: "Erro", err: err});
+            res.json({message: "Error", err: err});
         }
         else{
             res.json({message: "Success ", data: people})
