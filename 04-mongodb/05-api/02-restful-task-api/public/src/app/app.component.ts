@@ -8,3 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'MEAN';
 }
+//TO see this change! go into the workspace directory and launch the application
+//Launch using => ng serve --open
+//The open flag opens a browser to http://localhost:4200
