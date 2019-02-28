@@ -118,7 +118,7 @@ class Elephant {
   }
   const babar = new Elephant(8);
   console.log(`Babar's age is ${babar.updateAge()}.`)
-  setTimeout(babar.birthday(), 1000)
+  babar.birthday()
   //You call the birthday function
   //Then you call another function to get the new age
   setTimeout(function(){
