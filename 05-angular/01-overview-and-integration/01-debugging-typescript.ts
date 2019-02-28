@@ -85,7 +85,7 @@ class Ninja {
  function study(programmer: Ninja){
     return `Ready to whiteboard an algorithm, ${programmer.fullName}?`
  }
- // Now this has problems:
+ // Now this won't have the same problems as the Ninja was actually made as an instance of the class Ninja
  console.log(study(turing));
 //6 Arrow functions//
 
@@ -93,13 +93,15 @@ var increment = x => x + 1;
 // This works great:
 console.log(increment(3));
 var square = x => x * x;
+//With only one return from the function it does not need to be within curly braces
 // This is not showing me what I want:
 console.log(square(4));
-// This is not working:
+//With multiple parameters they needed to be within parentheses
 var multiply = (x,y) => x * y;
-// Nor is this working:
+//There are many mondules within the one arrow function
+//So they have to be contained properly
 var math = (x, y) => {
-    var sum = x + y;
+    let sum = x + y;
     let product = x * y;
     let difference = Math.abs(x - y);
     return [sum, product, difference];
@@ -111,6 +113,7 @@ class Elephant {
     birthday = function(){
       this.age++;
     }
+    // needs no parameters just needs to 'return' the age after it has been changed
     updateAge = () => this.age
   }
   const babar = new Elephant(8);
