@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MEAN';
+  title = 'app';
+  constructor(private _httpService: HttpService){}
 }
 //TO see this change! go into the workspace directory and launch the application
 //Launch using => ng serve --open
