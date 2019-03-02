@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var { Schema } = mongoose;
 
 var TaskSchema = new mongoose.Schema({
-    itle: {
+    title: {
         type: String, 
         required: true
     },
