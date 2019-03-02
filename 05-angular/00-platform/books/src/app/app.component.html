@@ -1,0 +1,73 @@
+<h1>Book-It</h1>
+<section>
+	<fieldset>
+		<legend>Add a Book</legend>
+
+		{{ form.valid | json }}
+
+		<form (submit)="onSubmit($event, bookForm)" #bookForm="ngForm">
+			<div>
+				<label for="">Title: </label>
+				<input
+					type="text"
+					name="title"
+					[(ngModel)]="book.title"
+					required
+					#title="ngModel"
+					minlength="3"
+				/>
+				<div *ngIf="(title.touched || title.dirty) && title.errors">
+					<div *ngIf="title.errors.required">
+						You must enter a title
+					</div>
+					<div *ngIf="title.errors.minlength">
+						Title must be at least
+						{{ title.errors.minlength.requiredLength }} characters.
+						{{ title.errors.minlength.actualLength }} characters is not enough.
+					</div>
+				</div>
+			</div>
+			<div>
+				<label for="">Author: </label>
+				<input
+					type="text"
+					name="author"
+					[(ngModel)]="book.author"
+					required
+					minlength="3"
+				/>
+			</div>
+			<div>
+				<label for="">Year: </label>
+				<input
+					type="number"
+					name="year"
+					[(ngModel)]="book.year"
+					#year="ngModel"
+					min="1700"
+					max="2019"
+					required
+				/>
+				<div *ngIf="year.touched && year.errors">
+					<div *ngIf="year.min">
+						{{ year.min | json }}
+					</div>
+				</div>
+			</div>
+			<div>
+				<label for="">Pages: </label>
+				<input type="number" name="pages" [(ngModel)]="book.pages" required />
+			</div>
+			<div>
+				<label for="">Publisher: </label>
+				<input
+					type="text"
+					name="publisher"
+					[(ngModel)]="book.publisher"
+					required
+				/>
+			</div>
+			<button *ngIf="bookForm.valid">Submit</button>
+		</form>
+	</fieldset>
+</section>

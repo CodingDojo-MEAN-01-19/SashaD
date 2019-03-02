@@ -1,0 +1,29 @@
+{
+    "window.zoomLevel":0,
+    "editor.renderWhitespace": "all",
+    "vsicons.projectDetection.autoReload": true,
+    "extensions.ignoreRecommendations": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "html.format.endWithNewline": true,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "prettier.requireConfig": true,
+    "workbench.iconTheme": "vscode-icons",
+    "telemetry.enableTelemetry": false,
+    "workbench.colorTheme": "Dark-Dracula",
+    "editor.tabSize": 2,
+    "emmet.includeLanguages": {
+        "HTML (Eex)": "html"
+    },
+    "editor.minimap.enabled": false,
+    "gitlens.advanced.message": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.defaultDateStyle": "absolute",
+    "breadcrumbs.enabled": true
+}
