@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { HttpService } from './http.service';
 import { Author } from './models';
 
 @Component({
@@ -9,6 +9,7 @@ import { Author } from './models';
 })
 export class AppComponent {
   title = 'books-api';
+  constructor(private _httpService: HttpService) {}
   author = new Author();
   authors: Author[] = [];
 }

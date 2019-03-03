@@ -6,7 +6,7 @@ module.exports = {
     console.log('We got the index');
     // get all resource (Authors)
     Author.find({})
-      .then(authors => res.json(console.log(authors)))
+      .then(authors => res.json(authors))
       .catch(error => res.status(Http.MovedPermanently).json(error));
   },
   show(req, res) {
@@ -14,13 +14,13 @@ module.exports = {
     const { author_id: AuthorId } = req.params;
     //get one resource
     Author.findById(AuthorId)
-      .then(author => res.json(console.log(author)))
+      .then(author => res.json(author))
       .catch(error => res.status(Http.MovedPermanently).json(error));
   },
   create(req, res) {
     // create resource
     Author.create(req.body)
-      .then(author => res.json(console.log(author)))
+      .then(author => res.json(author))
       .catch(error => {
         const errors = Object.keys(error.erros).map(
           key => error.errors(key).message
@@ -30,14 +30,15 @@ module.exports = {
   },
   createBook(req, res) {
     console.log(req.body);
+    const objbook = req.body;
     // create book under an author
     const { author_id: AuthorId } = req.params;
     Author.findOneAndUpdate(
       AuthorId,
-      { $push: { books: req.body } },
+      { $push: { books: objbook } },
       { new: true }
     )
-      .then(author => res.json(console.log(author)))
+      .then(author => res.json(author))
       .catch(error => {
         const errors = Object.keys(error.erros).map(
           key => error.errors(key).message
@@ -49,7 +50,7 @@ module.exports = {
     const { author_id: AuthorId } = request.params;
     // update resource
     Author.findByIdAndUpdate(AuthorId, req.body, { new: true })
-      .then(author => res.json(console.log(author)))
+      .then(author => res.json(author))
       .catch(error => {
         const errors = Object.keys(error.erros).map(
           key => error.errors(key).message
@@ -61,7 +62,7 @@ module.exports = {
     // delete resource
     const { author_id: AuthorId } = req.params;
     Author.findByIdAndRemove(AuthorId)
-      .then(author => res.json(console.log(author)))
+      .then(author => res.json(author))
       .catch(error => {
         const errors = Object.keys(error.erros).map(
           key => error.errors(key).message
