@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validate = require('mongoose-validator');
 
 const { Schema } = mongoose;
-
+// trying a different validator so I can get errors to appear
 var infoValidator = [
   validate({
     validator: 'isLength',
@@ -44,6 +44,7 @@ var AuthorSchema = new mongoose.Schema(
       {
         title: {
           type: String,
+          minlength: 3,
           required: true,
           validate: infoValidator,
         },

@@ -7,7 +7,7 @@ export class Author {
     {
       title: {
         type: string;
-        minlength: [2, 'Must be at least 2 characters'];
+        minlength: [3, 'Must be at least 2 characters'];
         required: [true, 'You must provide a title'];
       };
       publication_year: number;
