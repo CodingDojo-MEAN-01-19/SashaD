@@ -1,4 +1,4 @@
-#RUN
+# RUN
 npm start once mongodb is running and yarn dependencies are working not npm. Open localhost:5000/ to get the index page
 # Tasks
 
