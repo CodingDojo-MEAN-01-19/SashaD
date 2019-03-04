@@ -1,3 +1,37 @@
 h1 {
   text-align: center;
 }
+#getalltasks {
+  background-color: purple;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+}
+#showtask {
+  background-color: teal;
+  border-radius: 50%;
+  color: white;
+  padding: 8px;
+}
+#wrapper {
+  align-content: center;
+  border: 3px solid orange;
+  border-radius: 5px;
+  width: 90%;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+div #taskswrap {
+  text-align: center;
+  align-content: center;
+  border: 3px solid blue;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+table {
+  margin-right: auto;
+  margin-left: auto;
+}

@@ -5,11 +5,8 @@ const { taskController } = require('../controllers');
 const router = require('express').Router();
 // normally /books
 module.exports = router
+  .get('/:id', taskController.show)
   .get('/', taskController.index)
   .post('/', taskController.create)
-  .put('/:task_id', taskController.update)
-  .get('/:task_id', taskController.show)
-  .delete('/:task_id', taskController.destroy)
-  .all('*', (req, res) => {
-    res.sendFile(path.resolve('./public/dist/public/index.html'));
-  });
+  .put('/:id', taskController.update)
+  .delete('/:id', taskController.destroy);

@@ -4,6 +4,9 @@ const { Schema } = mongoose;
 
 var TaskSchema = new Schema(
   {
+    _id: {
+      type: String,
+    },
     title: {
       type: String,
       required: true,
