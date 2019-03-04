@@ -1,7 +1,4 @@
-This project has foreman with a Procfile
-This project also has yarn
-Make sure MongoDB is running!
-So to start the whole project with Angular CLI inside the express/nodejs project type npm start in production mode
+This project has foreman with a Procfile. This project also has yarn. Make sure MongoDB is running! So to start the whole project with Angular CLI inside the express/nodejs project type npm start in production mode
 # BooksApi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
