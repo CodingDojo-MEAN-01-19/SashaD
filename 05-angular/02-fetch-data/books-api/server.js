@@ -9,6 +9,8 @@ require('./server/config/database');
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
+//To serve static from anular through express check that the proper route is in place
+
 app.use(express.static('dist/books-api'));
 app.use(require('./server/routes'));
 

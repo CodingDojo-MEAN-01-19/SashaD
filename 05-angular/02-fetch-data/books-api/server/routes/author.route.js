@@ -6,7 +6,8 @@ const router = require('express').Router();
 module.exports = router
   .get('/', authorController.index)
   .post('/', authorController.create)
-  .put('/book/:author_id', authorController.createBook)
+  .put('/:author_id/book', authorController.createBook)
   .put('/:author_id', authorController.update)
   .get('/:author_id', authorController.show)
-  .delete('/:author_id', authorController.destroy);
+  .delete('/:author_id', authorController.destroy)
+  .delete('/:author_id/:book_id/book', authorController.deleteBook);

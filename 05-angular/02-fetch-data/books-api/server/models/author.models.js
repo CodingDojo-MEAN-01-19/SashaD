@@ -1,57 +1,48 @@
 const mongoose = require('mongoose');
-const validate = require('mongoose-validator');
+const path = require('path');
 
 const { Schema } = mongoose;
-// trying a different validator so I can get errors to appear
-var infoValidator = [
-  validate({
-    validator: 'isLength',
-    arguments: [2, 50],
-    message:
-      'Info provided should be between {ARGS[0]} and {ARGS[1]} characters',
-  }),
-  validate({
-    validator: 'isAlphanumeric',
-    passIfEmpty: true,
-    message: 'Info provided should contain alpha-numeric characters only',
-  }),
-];
-var AuthorSchema = new mongoose.Schema(
+// Did not like separate validator
+var AuthorSchema = new Schema(
   {
     first_name: {
       type: String,
-      required: true,
-      validate: infoValidator,
+      required: [true, 'Must provide first name'],
+      minlength: [4, 'First name must be longer than 3 characters'],
     },
     last_name: {
       type: String,
-      required: true,
-      minlength: 2,
-      validate: infoValidator,
+      required: [true, 'Must provide last name'],
+      minlength: [4, 'Last name must be longer than 3 characters'],
     },
     country_of_origin: {
       type: String,
-      required: true,
-      minlength: 3,
-      validate: infoValidator,
+      required: [true, 'Must provide a country of origin'],
+      minlength: [3, 'The length must be at least 3 characters'],
     },
     birthdate: {
       type: Date,
-      required: true,
-      max: Date.now,
+      validate: {
+        validator: function(v) {
+          v.setFullYear(v.getFullYear() + 1);
+          const currentTime = new Date();
+          currentTime.setHours(0, 0, 0, 0);
+          return v.getTime() <= currentTime.getTime();
+        },
+        message: props => 'You must be at least 1 years old.',
+      },
+      required: [true, 'You must provide a birthdate'],
     },
     books: [
       {
         title: {
           type: String,
-          minlength: 3,
+          minlength: 2,
           required: true,
-          validate: infoValidator,
         },
         publication_year: {
           type: Date,
           required: true,
-          max: Date.now,
         },
       },
     ],
