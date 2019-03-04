@@ -4,9 +4,9 @@ const { Http } = require('@status/codes');
 module.exports = {
   index(req, res) {
     console.log('We got the index');
-    // get all resource (books)
+    // get all resource (tasks)
     Task.find({})
-      .then(tasks => res.json(console.log(tasks)))
+      .then(task => res.json({ tasks: task }))
       .catch(error => res.status(Http.MovedPermanently).json(error));
   },
   show(req, res) {

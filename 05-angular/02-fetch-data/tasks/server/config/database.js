@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
-
-const modelsPath = path.join(__dirname, '../models');
+modelsPath = path.resolve('server', 'models');
 //const modelsPath =path.resolve('server', 'models');
 
 mongoose.connect('mongodb://localhost/restful_task_api', {

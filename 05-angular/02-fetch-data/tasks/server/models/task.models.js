@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-var TaskSchema = new mongoose.Schema(
+var TaskSchema = new Schema(
   {
     title: {
       type: String,

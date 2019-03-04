@@ -1,1 +1,14 @@
-<h1>Tasks API!</h1>
+<h1>{{ title }}</h1>
+<br /><br />
+<h1>All the tasks:</h1>
+
+<ul *ngFor="let task of tasks">
+  <li>
+    <h3>Title: {{ task.title }}</h3>
+  </li>
+  <ul>
+    <li>
+      <h3>Description: {{ task.description }}</h3>
+    </li>
+  </ul>
+</ul>

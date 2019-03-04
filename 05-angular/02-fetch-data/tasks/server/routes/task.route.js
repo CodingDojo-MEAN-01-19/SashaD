@@ -9,4 +9,7 @@ module.exports = router
   .post('/', taskController.create)
   .put('/:task_id', taskController.update)
   .get('/:task_id', taskController.show)
-  .delete('/:task_id', taskController.destroy);
+  .delete('/:task_id', taskController.destroy)
+  .all('*', (req, res) => {
+    res.sendFile(path.resolve('./public/dist/public/index.html'));
+  });
