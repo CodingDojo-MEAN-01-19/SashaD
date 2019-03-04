@@ -1,3 +1,5 @@
+# RUN
+ng build in one terminal and npm start in another once mongodb is running and yarn dependencies are working not npm. Open localhost:5000/ to get the index page
 # Tasks
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.

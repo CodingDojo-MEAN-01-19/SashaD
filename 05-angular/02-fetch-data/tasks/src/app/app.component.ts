@@ -23,14 +23,9 @@ export class AppComponent implements OnInit {
     });
     // call the service's method to post the data, but make sure the data is bundled up in an object!
   }
-  onButtonShowClick(id): void {
+  onButtonShowClick(task): void {
     console.log(`Click event is working!`);
-    const details = this._httpService.getTask(id);
-    details.subscribe(data => {
-      console.log('Got the single task!', data);
-      // console.log(data);
-      this.singletask = data['details'];
-    });
+    this.singletask = task['task'];
     // call the service's method to post the data, but make sure the data is bundled up in an object!
   }
 }
