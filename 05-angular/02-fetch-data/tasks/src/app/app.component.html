@@ -25,6 +25,20 @@
               </button>
             </div>
           </td>
+          <td>
+            <div>
+              <button id="editask" (click)="onShowEdit(task)">
+                EDIT
+              </button>
+            </div>
+          </td>
+          <td>
+            <div>
+              <button id="deletetask" (click)="onDelete(task)">
+                DELETE
+              </button>
+            </div>
+          </td>
         </tr>
       </table>
     </div>
@@ -44,8 +58,8 @@
     <div id="formbox" *ngIf="formShow">
       <h2>Create New Task</h2>
       <form (submit)="onSubmit()">
-        <!-- use the json pipe to see how newTask changes in real time -->
-        <p>{{ newTask | json }}</p>
+        <!-- use the json pipe to see how newTask changes in real time  <p>{{ newTask | json }}</p>-->
+        <p>{{ errors }}</p>
         <div class="form-group">
           <label for="title" class="control-label col-sm-2">Title:</label>
           <input
@@ -68,6 +82,51 @@
         </div>
         <br />
         <input type="submit" value="Create Task" />
+      </form>
+    </div>
+    <div id="editformbox" *ngIf="editFormShow">
+      <h2>Edit Task</h2>
+      <form (submit)="onSubmitEdit()">
+        <!-- See the errors on the page maybe make them red?-->
+        <p>{{ errors }}</p>
+        <div class="form-group">
+          <label for="editTaskTitle" class="control-label col-sm-2"
+            >Title:</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="editTaskTitle"
+            name="editTask.title"
+            [(ngModel)]="editTask.title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="editTaskDesc" class="control-label col-sm-2"
+            >Description:</label
+          >
+          <input
+            class="form-control"
+            id="editTaskDesc"
+            type="text"
+            name="editTask.description"
+            [(ngModel)]="editTask.description"
+          />
+        </div>
+        <div class="form-group">
+          <label for="editTaskComplete" class="control-label col-sm-2"
+            >Completed?
+          </label>
+          <input
+            class="form-control"
+            id="editTaskComplete"
+            type="checkbox"
+            name="editTask.completed"
+            [(ngModel)]="editTask.completed"
+          />
+        </div>
+        <br />
+        <input type="submit" value="Edit Task" />
       </form>
     </div>
   </div>

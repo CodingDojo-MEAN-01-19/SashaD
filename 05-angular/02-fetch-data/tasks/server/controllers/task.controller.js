@@ -12,10 +12,10 @@ module.exports = {
   },
   show(req, res) {
     //get one resource
-    console.log('We got the one task');
-    Task.findById(mongoose.Types.ObjectId(req.params.id))
+    // console.log('We got the one task');
+    Task.findById(req.params.id)
       .then(data => res.json({ task: data }))
-      .catch(error => res.status(Http.MovedPermanently).json(error));
+      .catch(err => res.json({ message: 'Create Task Error', error: err }));
   },
   create(req, res) {
     randId = Math.floor(Math.random() * 1000);
@@ -24,27 +24,25 @@ module.exports = {
       title: req.body.title,
       description: req.body.description,
     });
-    console.log(req.body);
-    task.save(function(err, info) {
-      if (err) {
-        res.json({ message: 'Create Task Error', error: err });
-      } else {
-        res.json({ message: 'Task Created', info: info });
-      }
-    });
+    // console.log(req.body);
+    task
+      .save()
+      .then(task => res.json({ message: 'Task Created', info: info }))
+      .catch(err => res.json({ message: 'Create Task Error', error: err }));
   },
   update(req, res) {
-    const { task_id: taskId } = req.params;
     // update resource
-    Task.findByIdAndUpdate(taskId, req.body, { new: true })
-      .then(task => res.json(task))
-      .catch(error => res.status(Http.MovedPermanently).json(error));
+    Task.findOneAndUpdate({ _id: req.params.id }, req.body, {
+      runValidators: true,
+      context: 'query',
+    })
+      .then(task => res.json({ message: 'Task Created', info: task }))
+      .catch(err => res.json({ message: 'Create Task Error', error: err }));
   },
   destroy(req, res) {
     // delete resource
-    const { task_id: taskId } = req.params;
-    Task.findByIdAndRemove(taskId)
-      .then(task => res.json(console.log(task)))
-      .catch(error => res.status(Http.MovedPermanently).json(error));
+    Task.findByIdAndRemove(req.params.id)
+      .then(task => res.json({ message: 'Task Deleted', info: task }))
+      .catch(err => res.json({ message: 'Delete Task Error', error: err }));
   },
 };

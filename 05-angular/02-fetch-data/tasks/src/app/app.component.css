@@ -1,6 +1,17 @@
 h1 {
   text-align: center;
 }
+#wrapper {
+  align-content: center;
+  border: 3px solid orange;
+  border-radius: 5px;
+  width: 90%;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* The styling for the buttons */
 #getalltasks {
   display: block;
   background-color: purple;
@@ -17,6 +28,12 @@ h1 {
   color: white;
   padding: 15px;
 }
+#editask {
+  background-color: teal;
+  border-radius: 100%;
+  color: white;
+  padding: 15px;
+}
 #showcreateform {
   display: block;
   background-color: orangered;
@@ -26,15 +43,14 @@ h1 {
   margin-right: auto;
   margin-left: auto;
 }
-#wrapper {
-  align-content: center;
-  border: 3px solid orange;
-  border-radius: 5px;
-  width: 90%;
-  padding: 10px;
-  margin-right: auto;
-  margin-left: auto;
+#deletetask {
+  background-color: rgb(128, 9, 0);
+  border-radius: 100%;
+  color: white;
+  padding: 15px;
 }
+
+/* The styling for the boxes */
 div #taskswrap {
   text-align: center;
   align-content: center;
@@ -45,7 +61,15 @@ div #taskswrap {
   margin-left: auto;
   margin-bottom: 10px;
 }
-div #formbox {
+/* The styling for the table that holds all the tasks */
+table {
+  margin-right: auto;
+  margin-left: auto;
+}
+table tr td {
+  padding: 5px;
+}
+#editformbox {
   text-align: center;
   align-content: center;
   border: 3px solid pink;
@@ -55,11 +79,20 @@ div #formbox {
   margin-left: auto;
   margin-bottom: 10px;
 }
-table {
+p {
+  color: red;
+}
+#formbox {
+  text-align: center;
+  align-content: center;
+  border: 3px solid rgb(121, 53, 153);
+  border-radius: 5px;
+  padding: 10px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 10px;
 }
-div #taskwrap {
+#taskwrap {
   text-align: center;
   align-content: center;
   border: 3px solid green;
