@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 
 import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; // <-- import FormsModule.
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [HttpService],
   bootstrap: [AppComponent],
 })

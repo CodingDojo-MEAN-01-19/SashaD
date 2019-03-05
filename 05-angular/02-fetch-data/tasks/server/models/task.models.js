@@ -9,7 +9,8 @@ var TaskSchema = new Schema(
     },
     title: {
       type: String,
-      required: true,
+      required: [true, 'You must provide a title'],
+      minlength: [2, 'The title must be longer than two characters'],
     },
     description: {
       type: String,

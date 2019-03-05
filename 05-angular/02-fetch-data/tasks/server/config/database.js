@@ -10,7 +10,11 @@ mongoose.connect('mongodb://localhost/restful_task_api', {
 });
 //Only have the listeners for development mode
 mongoose.connection.on('connected', () => console.log('mongodb connected'));
+require('../models/task.models.js');
 
-fs.readdirSync(modelsPath)
-  .filter(file => file.endsWith('.js'))
-  .forEach(file => require(path.join(modelsPath, file)));
+var models_path = path.join(__dirname, '../models');
+fs.readdirSync(models_path).forEach(function(file) {
+  if (file.indexOf('.js') >= 0) {
+    require(models_path + '/' + file);
+  }
+});

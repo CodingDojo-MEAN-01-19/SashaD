@@ -1,6 +1,8 @@
 export class Task {
-  _id: string;
-  title: string;
-  description: string;
-  completed: boolean;
+  constructor(
+    public id: number,
+    public title: string,
+    public description: string,
+    public complete = false
+  ) {}
 }

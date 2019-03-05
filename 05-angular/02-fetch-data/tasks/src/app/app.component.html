@@ -1,3 +1,9 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+  />
+</head>
 <body ng-app="">
   <div id="wrapper">
     <h1>{{ title }}</h1>
@@ -6,16 +12,15 @@
       <button id="getalltasks" (click)="onButtonTasksClick()">
         GET ALL TASKS
       </button>
+      <button id="showcreateform" (click)="onShowForm()">
+        CREATE A NEW TASK
+      </button>
       <table>
         <tr *ngFor="let task of tasks">
           <td>{{ task.title }}</td>
           <td>
             <div>
-              <button
-                id="showtask"
-                (click)="onButtonShowClick(task)"
-                ng-click="isclicked"
-              >
+              <button id="showtask" (click)="onButtonShowClick(task)">
                 SHOW
               </button>
             </div>
@@ -35,6 +40,35 @@
           ><h4>You haven't finished this task!</h4></ng-template
         >
       </div>
+    </div>
+    <div id="formbox" *ngIf="formShow">
+      <h2>Create New Task</h2>
+      <form (submit)="onSubmit()">
+        <!-- use the json pipe to see how newTask changes in real time -->
+        <p>{{ newTask | json }}</p>
+        <div class="form-group">
+          <label for="title" class="control-label col-sm-2">Title:</label>
+          <input
+            class="form-control"
+            type="text"
+            id="title"
+            name="newTask.title"
+            [(ngModel)]="newTask.title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="desc" class="control-label col-sm-2">Description:</label>
+          <input
+            class="form-control"
+            id="desc"
+            type="textcopy"
+            name="newTask.description"
+            [(ngModel)]="newTask.description"
+          />
+        </div>
+        <br />
+        <input type="submit" value="Create Task" />
+      </form>
     </div>
   </div>
 </body>

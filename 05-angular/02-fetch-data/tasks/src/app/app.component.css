@@ -2,16 +2,29 @@ h1 {
   text-align: center;
 }
 #getalltasks {
+  display: block;
   background-color: purple;
   color: white;
   padding: 8px;
   border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
 }
 #showtask {
   background-color: teal;
   border-radius: 100%;
   color: white;
   padding: 15px;
+}
+#showcreateform {
+  display: block;
+  background-color: orangered;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
 }
 #wrapper {
   align-content: center;
@@ -32,7 +45,16 @@ div #taskswrap {
   margin-left: auto;
   margin-bottom: 10px;
 }
-
+div #formbox {
+  text-align: center;
+  align-content: center;
+  border: 3px solid pink;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+}
 table {
   margin-right: auto;
   margin-left: auto;
@@ -45,4 +67,5 @@ div #taskwrap {
   padding: 10px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 10px;
 }

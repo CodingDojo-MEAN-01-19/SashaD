@@ -3,10 +3,10 @@ const { taskController } = require('../controllers');
 // if you need two controllers instead of writing two lines you can add a comma within the brackets after the first controller
 
 const router = require('express').Router();
-// normally /books
+
 module.exports = router
   .get('/:id', taskController.show)
   .get('/', taskController.index)
-  .post('/', taskController.create)
+  .post('/create', taskController.create)
   .put('/:id', taskController.update)
   .delete('/:id', taskController.destroy);

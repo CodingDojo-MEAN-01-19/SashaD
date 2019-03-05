@@ -1,6 +1,7 @@
 const Task = require('mongoose').model('Task');
 const { Http } = require('@status/codes');
 // enum writen representation and status
+
 module.exports = {
   index(req, res) {
     console.log('We got the index');
@@ -17,38 +18,33 @@ module.exports = {
       .catch(error => res.status(Http.MovedPermanently).json(error));
   },
   create(req, res) {
-    // create resource
-    Task.create(req.body)
-      .then(task => res.json(task))
-      .catch(error => {
-        const errors = Object.keys(error.erros).map(
-          key => error.errors(key).message
-        );
-        res.status(Http.UnprocessableEntity).json(errors);
-      });
+    randId = Math.floor(Math.random() * 1000);
+    var task = new Task({
+      _id: randId,
+      title: req.body.title,
+      description: req.body.description,
+    });
+    console.log(req.body);
+    task.save(function(err, info) {
+      if (err) {
+        res.json({ message: 'Create Task Error', error: err });
+      } else {
+        res.json({ message: 'Task Created', info: info });
+      }
+    });
   },
   update(req, res) {
     const { task_id: taskId } = req.params;
     // update resource
     Task.findByIdAndUpdate(taskId, req.body, { new: true })
       .then(task => res.json(task))
-      .catch(error => {
-        const errors = Object.keys(error.erros).map(
-          key => error.errors(key).message
-        );
-        res.status(Http.UnprocessableEntity).json(errors);
-      });
+      .catch(error => res.status(Http.MovedPermanently).json(error));
   },
   destroy(req, res) {
     // delete resource
     const { task_id: taskId } = req.params;
     Task.findByIdAndRemove(taskId)
       .then(task => res.json(console.log(task)))
-      .catch(error => {
-        const errors = Object.keys(error.erros).map(
-          key => error.errors(key).message
-        );
-        res.status(Http.UnprocessableEntity).json(errors);
-      });
+      .catch(error => res.status(Http.MovedPermanently).json(error));
   },
 };

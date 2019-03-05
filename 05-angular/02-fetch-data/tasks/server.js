@@ -10,8 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/dist/public'));
 
-require('./server/config/database');
-const apiRoutes = require('./server/routes');
-app.use(apiRoutes);
+require('./server/config/database.js');
+app.use(require('./server/routes'));
 
 app.listen(port, () => console.log(`express server listening on port ${port}`));
