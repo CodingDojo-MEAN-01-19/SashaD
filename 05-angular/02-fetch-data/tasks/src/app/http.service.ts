@@ -12,8 +12,4 @@ export class HttpService {
     return this._http.get('/tasks');
     // provide the url of your get route - make sure this is set up in your server!
   }
-  getTask(id) {
-    console.log('SUCCESS For one task');
-    return this._http.get('/tasks/' + id);
-  }
 }

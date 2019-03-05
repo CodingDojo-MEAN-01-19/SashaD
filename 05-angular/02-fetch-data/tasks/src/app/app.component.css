@@ -9,9 +9,9 @@ h1 {
 }
 #showtask {
   background-color: teal;
-  border-radius: 50%;
+  border-radius: 100%;
   color: white;
-  padding: 8px;
+  padding: 15px;
 }
 #wrapper {
   align-content: center;
@@ -30,8 +30,19 @@ div #taskswrap {
   padding: 10px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 10px;
 }
+
 table {
+  margin-right: auto;
+  margin-left: auto;
+}
+div #taskwrap {
+  text-align: center;
+  align-content: center;
+  border: 3px solid green;
+  border-radius: 5px;
+  padding: 10px;
   margin-right: auto;
   margin-left: auto;
 }

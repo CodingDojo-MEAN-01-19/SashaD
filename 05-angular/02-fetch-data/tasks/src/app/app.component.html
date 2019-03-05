@@ -1,26 +1,40 @@
-<div id="wrapper">
-  <h1>{{ title }}</h1>
-  <br /><br />
-  <div id="taskswrap">
-    <button id="getalltasks" (click)="onButtonTasksClick()">
-      GET ALL TASKS
-    </button>
-    <table>
-      <tr *ngFor="let task of tasks">
-        <td>{{ task.title }}</td>
-        <td>
-          <button id="showtask" (click)="onButtonShowClick(task)">
-            SHOW
-          </button>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div id="taskwrap">
-    <div>
-      {{ singletask | json }}
-      <h3>{{ singletask.title }}</h3>
-      <h3>{{ singletask.description }}</h3>
+<body ng-app="">
+  <div id="wrapper">
+    <h1>{{ title }}</h1>
+    <br /><br />
+    <div id="taskswrap">
+      <button id="getalltasks" (click)="onButtonTasksClick()">
+        GET ALL TASKS
+      </button>
+      <table>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.title }}</td>
+          <td>
+            <div>
+              <button
+                id="showtask"
+                (click)="onButtonShowClick(task)"
+                ng-click="isclicked"
+              >
+                SHOW
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="show">
+      <div id="taskwrap">
+        <h3>{{ singletask['title'] }}</h3>
+        <h4>{{ singletask['description'] }}</h4>
+        <div *ngIf="iscompleted; then content; else other_content">
+          Content here will not be seen...
+        </div>
+        <ng-template #content><h4>You finished this task!</h4></ng-template>
+        <ng-template #other_content
+          ><h4>You haven't finished this task!</h4></ng-template
+        >
+      </div>
     </div>
   </div>
-</div>
+</body>
