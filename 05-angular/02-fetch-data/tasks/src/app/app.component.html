@@ -4,11 +4,12 @@
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
   />
 </head>
-<body ng-app="">
+<body class="root">
   <div id="wrapper">
     <h1>{{ title }}</h1>
     <br /><br />
     <div id="taskswrap">
+      <!--This button also closes all excess boxes open or components-->
       <button id="getalltasks" (click)="onButtonTasksClick()">
         GET ALL TASKS
       </button>
@@ -43,17 +44,11 @@
       </table>
     </div>
     <div *ngIf="show">
-      <div id="taskwrap">
-        <h3>{{ singletask['title'] }}</h3>
-        <h4>{{ singletask['description'] }}</h4>
-        <div *ngIf="iscompleted; then content; else other_content">
-          Content here will not be seen...
-        </div>
-        <ng-template #content><h4>You finished this task!</h4></ng-template>
-        <ng-template #other_content
-          ><h4>You haven't finished this task!</h4></ng-template
-        >
-      </div>
+      <app-task
+        *ngIf="singletask"
+        [onButtonShowClick]="singletask"
+        [iscompleted]="this.iscompleted"
+      ></app-task>
     </div>
     <div id="formbox" *ngIf="formShow">
       <h2>Create New Task</h2>

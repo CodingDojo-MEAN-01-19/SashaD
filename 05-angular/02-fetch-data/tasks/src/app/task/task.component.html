@@ -1,0 +1,11 @@
+<div id="taskwrap">
+  <h3>{{ onButtonShowClick.title }}</h3>
+  <h4>{{ onButtonShowClick.description }}</h4>
+  <div *ngIf="iscompleted; then content; else other_content">
+    Content here will not be seen...
+  </div>
+  <ng-template #content><h4>You finished this task!</h4></ng-template>
+  <ng-template #other_content
+    ><h4>You haven't finished this task!</h4></ng-template
+  >
+</div>

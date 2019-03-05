@@ -1,0 +1,10 @@
+#taskwrap {
+  text-align: center;
+  align-content: center;
+  border: 3px solid green;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+}
