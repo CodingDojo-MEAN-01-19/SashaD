@@ -1,0 +1,2 @@
+express: nodemon server.js
+angular: ng serve --proxy-config proxy.conf.json

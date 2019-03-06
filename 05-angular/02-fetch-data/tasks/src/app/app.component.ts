@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 import { Task } from './models';
-import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-root',
