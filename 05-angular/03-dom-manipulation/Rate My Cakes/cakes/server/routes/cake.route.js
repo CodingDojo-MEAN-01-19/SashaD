@@ -1,12 +1,12 @@
-const { taskController } = require('../controllers');
+const { cakeController } = require('../controllers');
 // const bookController = require('../controllers/book.controller'); without barreling
 // if you need two controllers instead of writing two lines you can add a comma within the brackets after the first controller
 
 const router = require('express').Router();
 
 module.exports = router
-  .get('/:id', taskController.show)
-  .get('/', taskController.index)
-  .post('/', taskController.create)
-  .put('/:id', taskController.rate)
-  .delete('/:id', taskController.destroy);
+  .get('/:id', cakeController.show)
+  .get('/', cakeController.index)
+  .post('/', cakeController.create)
+  .put('/:id', cakeController.rate)
+  .delete('/:id', cakeController.destroy);

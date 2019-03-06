@@ -1,0 +1,65 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+  />
+</head>
+<body class="root">
+  <div id="wrapper">
+    <h1>{{ title }}</h1>
+    <br /><br />
+      <div id="formbox">
+        <h2>Submit a cake for rating</h2>
+        <form (submit)="createTaskFromService()">
+          <!-- use the json pipe to see how newTask changes in real time  <p>{{ newTask | json }}</p>-->
+          <p>{{ errors }}</p>
+          <div class="form-group">
+            <label for="title">Baker Name: </label>
+            <input
+              class="form-control"
+              type="text"
+              id="bakerName"
+              name="newTask.bakerName"
+              [(ngModel)]="newCake.bakerName"
+            />
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">Image Url: </label>
+            <input
+              class="form-control"
+              id="imageUrl"
+              type="text"
+              name="newCake.imageUrl"
+              [(ngModel)]="newCake.imageUrl"
+            />
+          </div>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+      <div id="cakesbox">
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>There will be many cakes here tomorrow</h4>
+        <h4>This is to test the scroll feature.</h4>
+        <h4>Is it working</h4>
+      </div>
+    </div>
+</body>
+
+
