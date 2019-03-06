@@ -1,6 +1,6 @@
 # RUN
 
-ng build in one terminal and yarn start in another once mongodb is running and yarn dependencies are working not npm. Open localhost:5000/ to get the index page
+ng build in one terminal while making changes and yarn start in another once mongodb is running and yarn dependencies are working not npm. Open localhost:5000/ to get the index page
 
 # Tasks
 
