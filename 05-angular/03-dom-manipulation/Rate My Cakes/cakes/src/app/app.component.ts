@@ -10,12 +10,22 @@ import { Cake } from './models';
 export class AppComponent implements OnInit {
   title = 'Rate My Cake!';
   newCake: any;
+  cakes: [];
   errors: any;
+  show = false;
   constructor(private _httpService: HttpService){}
   ngOnInit() {
     this.newCake = { bakerName: '', imageUrl: '' };
+    const observable = this._httpService.getCakes();
+    observable.subscribe(data => {
+      console.log('Got our data!', data);
+      // console.log(data);
+      // this closes all excess boxes open
+      this.cakes = data['cakes'];
+      this.show = false;
+    });
   }
-  createTaskFromService(newCake) {
+  createCakeFromService(newCake) {
     console.log("We got the cake", this.newCake);
     const createTask = this._httpService.addCake(this.newCake);
     createTask.subscribe(data => {

@@ -1,3 +1,4 @@
+
 h1 {
   text-align: center;
 }
@@ -35,4 +36,27 @@ div #cakesbox {
   margin-left: 5%;
   margin-bottom: 10px;
   overflow-y: scroll;
+}
+span {
+  font-family: 'EB Garamond', serif;
+  font-size: 3.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  font-style:normal;
+  padding-top: 0.1em;
+  text-shadow: 0.07em 0.07em 0 rgba(0, 0, 0, 0.1);
+}
+/* Rating form css */
+#rateform {
+  display: inline-block;
+  vertical-align: top;
+  width: 70%;
+  text-align: center;
+  align-content: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: 5%;
+  margin-bottom: 10px;
 }

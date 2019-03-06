@@ -7,6 +7,10 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   constructor(private _http: HttpClient) { }
 
+  getCakes() {
+    console.log('SUCCESS');
+    return this._http.get('/cakes');
+  }
   addCake(newCake) {
     return this._http.post('/cakes', newCake);
   }

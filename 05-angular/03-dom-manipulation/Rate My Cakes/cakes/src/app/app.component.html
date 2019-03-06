@@ -3,14 +3,19 @@
     rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
   />
+  <!--Just testing someone else's font *By Daniel Burrows*-->
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=EB+Garamond|Cardo:400italic"
+  />
 </head>
 <body class="root">
   <div id="wrapper">
-    <h1>{{ title }}</h1>
+    <span><h1>{{ title }}</h1></span>
     <br /><br />
       <div id="formbox">
-        <h2>Submit a cake for rating</h2>
-        <form (submit)="createTaskFromService()">
+        <span><h3>Submit a cake for rating</h3></span>
+        <form (submit)="createCakeFromService()">
           <!-- use the json pipe to see how newTask changes in real time  <p>{{ newTask | json }}</p>-->
           <p>{{ errors }}</p>
           <div class="form-group">
@@ -37,7 +42,39 @@
           <input type="submit" value="Submit" />
         </form>
       </div>
-      <div id="cakesbox">
+      <div id="cakesbox" *ngFor="let cake of cakes">
+        <span>
+          <div>
+              <img src="http://subdomain.yourdomain.com/images/whatever_image.png" alt="A Cake" width="100" height="100" />
+            <div id="rateform">
+              <form (submit)="onSubmit()">
+                  <p>{{ errors }}</p>
+                  <div class="form-group">
+                    <select
+                        class="form-control"
+                        id="title"
+                        name="newRate.rating"
+                        [(ngModel)]="newRate.rating"
+                      >
+                      <option value="5">5 Stars</option>
+                      <option value="4">4 Stars</option>
+                      <option value="3">3 Stars</option>
+                      <option value="2">2 Stars</option>
+                      <option value="1">1 Star</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <input
+                        class="form-control"
+                        id="comment"
+                        type="text"
+                        name="newCake.comment"
+                        [(ngModel)]="newRate.comment"
+                      />
+                    </div>
+              </form>
+            </div>
+          </div>
         <h4>There will be many cakes here tomorrow</h4>
         <h4>There will be many cakes here tomorrow</h4>
         <h4>There will be many cakes here tomorrow</h4>
@@ -58,6 +95,7 @@
         <h4>There will be many cakes here tomorrow</h4>
         <h4>This is to test the scroll feature.</h4>
         <h4>Is it working</h4>
+      </span>
       </div>
     </div>
 </body>
