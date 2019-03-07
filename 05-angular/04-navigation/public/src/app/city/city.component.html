@@ -1,5 +1,16 @@
-<div id="cityWrap" *ngIf="city">
-  <h1>{{ city['name'] }}, WA</h1>
+<div id="cityWrap" *ngIf="city" style="overflow: hidden;">
+  <div *ngIf="city['name'] == 'Seattle'|| city['name'] == 'District of Columbia'">
+      <h1>{{ city['name'] }}, WA</h1>
+  </div>
+  <div *ngIf="city['name'] == 'Dallas'">
+      <h1>{{ city['name'] }}, TX</h1>
+  </div>
+  <div *ngIf="city['name'] == 'Chicago'">
+      <h1>{{ city['name'] }}, IL</h1>
+  </div>
+  <div *ngIf="city['name'] == 'San Jose' || city['name'] == 'Burbank'">
+      <h1>{{ city['name'] }}, CA</h1>
+  </div>
   <ul>
     <li><h4>Humidity: {{ city['main']['humidity'] }}</h4></li>
     <li><h4>Temperature(Average): {{ city['main']['temp'] }}°F </h4></li>
@@ -8,5 +19,28 @@
     <ng-template #content><li><h4>Status: Mostly cloudy</h4></li></ng-template>
     <ng-template #other_content><li><h4>Status: Partly cloudy</h4></li></ng-template>
   </ul>
-  <img src="../../assets/images/seattle.jpg" alt="Seattle At Night" width="auto" height="200px">
+  <div style="float: right; margin-right: 75px;" *ngIf="city['name'] == 'Dallas'">
+      <img src="../../assets/images/dallas.jpg" alt="Dallas" width="auto" height="200px">
+  </div>
+
+  <div style="float: right; margin-right: 75px;" *ngIf="city['name'] == 'Chicago'">
+      <img src="../../assets/images/chicago.jpg" alt="Chicago" width="auto" height="200px">
+  </div>
+
+  <div style="float: right; margin-right: 75px;" *ngIf="city['name'] == 'Seattle'">
+      <img src="../../assets/images/seattle.jpg" alt="Seattle At Night" width="auto" height="200px">
+  </div>
+
+  <div style="float: right; margin-right: 75px;" *ngIf="city['name'] == 'Burbank'">
+      <img src="../../assets/images/burbank.jpg" alt="Burbank" width="auto" height="200px">
+  </div>
+
+  <div style="float: right; margin-right: 75px;" *ngIf="city['name'] == 'District of Columbia'">
+      <img src="../../assets/images/dc.jpg" alt="District of Columbia" width="auto" height="200px">
+  </div>
+
+  <div style="float: right; margin-right: 75px;" *ngIf="city['name'] == 'San Jose'">
+      <img src="../../assets/images/sanjose.jpg" alt="San Jose" width="auto" height="200px">
+  </div>
+
 </div>

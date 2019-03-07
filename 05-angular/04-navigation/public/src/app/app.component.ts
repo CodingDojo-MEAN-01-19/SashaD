@@ -17,17 +17,15 @@ export class AppComponent {
     { name: 'Dallas', id: 4190598 },
     { name: 'Chicago', id: 4887398 }
   ];
-  city = this.cities[0]['id'];
-  singlecity: any;
-  constructor(private route: ActivatedRoute,private _http: HttpService) { }
-  url: string = this.route['_routerState'].snapshot.url;
-  Acity: any;
-  newArr: any;
+  // city: any = this.cities[0]['id'];
+  constructor(private _http: HttpService) { }
+  // url: string = this.route['_routerState'].snapshot.url;
+  // newArr: any;
   ngOnInit() {
-    this.newArr = this.url.split(''); // or newStr = [...str];
-    this.newArr.splice(0,1);
-    this.newArr = this.newArr.join('');
-    console.log("This is the url " + this.newArr);
-    this._http.getCity(this.newArr).subscribe(data => this.Acity = data);
+    // this.newArr = this.url.split(''); // or newStr = [...str];
+    // this.newArr.splice(0,1);
+    // this.newArr = this.newArr.join('');
+    // console.log("This is the url from the app side " + this.newArr);
+    // this._http.getCity(this.newArr).subscribe(data => this.city = data);
   }
 }

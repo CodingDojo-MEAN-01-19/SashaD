@@ -20,7 +20,7 @@ export class CityComponent implements OnInit {
     this.newArr = this.url.split(''); // or newStr = [...str];
     this.newArr.splice(0,1);
     this.newArr = this.newArr.join('');
-    console.log("This is the url " + this.newArr);
+    console.log("This is the url from the city side " + this.newArr);
     this._http.getCity(this.newArr).subscribe(data => this.city = data);
   }
 

@@ -14,7 +14,7 @@ ul {
   vertical-align: top;
   display: inline-block;
 }
-img {
+div img {
   display: inline-block;
   margin-left: 20%;
   border-radius: 8px;
