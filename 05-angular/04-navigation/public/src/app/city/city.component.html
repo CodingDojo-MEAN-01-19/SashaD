@@ -1,4 +1,5 @@
 <div id="cityWrap" *ngIf="city" style="overflow: hidden;">
+   <!-- These if statements are to change the state based on the city name -->
   <div *ngIf="city['name'] == 'Seattle'|| city['name'] == 'District of Columbia'">
       <h1>{{ city['name'] }}, WA</h1>
   </div>
@@ -19,6 +20,7 @@
     <ng-template #content><li><h4>Status: Mostly cloudy</h4></li></ng-template>
     <ng-template #other_content><li><h4>Status: Partly cloudy</h4></li></ng-template>
   </ul>
+  <!-- These if statements are to change the image to match the current city name -->
   <div style="float: right; margin-right: 75px;" *ngIf="city['name'] == 'Dallas'">
       <img src="../../assets/images/dallas.jpg" alt="Dallas" width="auto" height="200px">
   </div>

@@ -2,9 +2,9 @@ import { CityComponent } from './city/city.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+// These routes directly use the city id for the api request so that the get request can insert the id into the url
 const routes: Routes = [
-  { path: '5809844', component: CityComponent },
+  { path: '5809844', component: CityComponent,  },
   { path: '5392171', component: CityComponent },
   { path: '4885983', component: CityComponent },
   { path: '4190598', component: CityComponent },
