@@ -5,11 +5,6 @@
   </h1>
 </div>
 <div id="buttonbox">
-  <button [routerLink]="['/seattle']">Seattle WA</button> |
-  <button [routerLink]="['/sanjose']">San Jose CA</button> |
-  <button [routerLink]="['/burbank']">Burbank CA</button> |
-  <button [routerLink]="['/dallas']">Dallas TX</button> |
-  <button [routerLink]="['/dc']">Washington DC</button> |
-  <button [routerLink]="['/chicago']">Chicago IL</button>
+  <button *ngFor="let city of cities" style="display: inline-block; margin-right: 10px;" [routerLink]="['/' + city.id]">{{ city.name }} </button>
 </div>
 <router-outlet></router-outlet>
