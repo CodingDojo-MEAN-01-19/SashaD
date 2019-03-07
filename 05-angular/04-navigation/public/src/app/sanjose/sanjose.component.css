@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+}
+#cityWrap {
+  align-content: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 90%;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+ul {
+  vertical-align: top;
+  display: inline-block;
+}
+img {
+  display: inline-block;
+  margin-left: 20%;
+  border-radius: 8px;
+}

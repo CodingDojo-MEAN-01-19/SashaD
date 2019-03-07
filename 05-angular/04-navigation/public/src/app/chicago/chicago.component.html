@@ -1,0 +1,12 @@
+<div id="cityWrap" *ngIf="city">
+  <h1>{{ city['name'] }}, IL</h1>
+  <ul>
+    <li><h4>Humidity: {{ city['main']['humidity'] }}</h4></li>
+    <li><h4>Temperature(Average): {{ city['main']['temp'] }}°F </h4></li>
+    <li><h4>Temperature(Low): {{ city['main']['temp_min'] }}°F</h4></li>
+    <div *ngIf="city['clouds']['all']> 60;then content else other_content">here is ignored</div>
+    <ng-template #content><li><h4>Status: Mostly cloudy</h4></li></ng-template>
+    <ng-template #other_content><li><h4>Status: Partly cloudy</h4></li></ng-template>
+  </ul>
+  <img src="../../assets/images/chicago.jpg" alt="Seattle At Night" width="auto" height="200px">
+</div>
