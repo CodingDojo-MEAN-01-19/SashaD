@@ -28,4 +28,7 @@ export class ProductCreateComponent implements OnInit {
       }
     });
   }
+  GoBack() {
+    this.router.navigateByUrl('/products');
+  }
 }
