@@ -1,3 +1,35 @@
+<script></script>
 <div id="productlist">
   <h2>Products List</h2>
+  <div class="parent">
+    <div class="grid-item" *ngFor="let product of products">
+      <div class="card" style="width: 18rem;">
+        <div class="crop">
+          <img src="{{ product.url }}" alt="Card image cap" />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">${{ product.price }}</li>
+        </ul>
+        <div class="card-body">
+          <button
+            id="editproduct"
+            class="btn btn-primary"
+            (click)="onShowEdit(product)"
+          >
+            Edit
+          </button>
+          <button
+            id="deleteproduct"
+            class="btn btn-primary"
+            (click)="onDelete(product._id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

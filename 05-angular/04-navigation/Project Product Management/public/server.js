@@ -12,8 +12,11 @@ app.use(parser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/dist/public'));
 
-app.all("*", (req,res,next) => {
-  res.sendFile(path.resolve("./dist/public/index.html"))
+require('./server/config/database.js');
+app.use(require('./server/routes'));
+
+app.all('*', (req, res, next) => {
+  res.sendFile(path.resolve('./dist/public/index.html'));
 });
 
 app.listen(port, () => console.log(`express server listening on port ${port}`));

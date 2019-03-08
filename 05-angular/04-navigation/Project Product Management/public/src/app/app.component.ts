@@ -9,9 +9,6 @@ import { Product } from './models';
 })
 export class AppComponent {
   title = 'PPM - Project Product Management';
-  newProduct: any;
-  products: [];
-  errors: any;
-  constructor(private _http: ProductService) { }
+  constructor(private _http: ProductService) {}
   ngOnInit() {}
 }

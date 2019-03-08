@@ -2,11 +2,19 @@
   align-content: center;
   border: 3px solid black;
   border-radius: 5px;
-  width: 90%;
+  width: 98%;
   padding: 10px;
   margin-right: auto;
   margin-left: auto;
 }
 #editproduct h2 {
   text-align: left;
+}
+#editform {
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+}
+#deleteproduct {
+  margin-left: 10px;
 }

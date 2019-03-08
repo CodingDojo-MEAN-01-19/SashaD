@@ -2,11 +2,40 @@
   align-content: center;
   border: 3px solid black;
   border-radius: 5px;
-  width: 90%;
+  width: 98%;
   padding: 10px;
   margin-right: auto;
   margin-left: auto;
+  overflow: scroll;
+  height: 685px;
 }
 #productlist h2 {
   text-align: left;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-rows: 282px 282px;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  grid-auto-flow: row;
+}
+.grid-item {
+  justify-self: center;
+  align-self: center;
+}
+
+.crop {
+  height: 150px;
+  width: 18rem;
+  overflow: hidden;
+}
+.crop img {
+  height: 100%;
+  width: auto;
+}
+
+#deleteproduct {
+  margin-left: 10px;
 }

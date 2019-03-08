@@ -1,3 +1,48 @@
 <div id="editproduct">
   <h2>Edit Product</h2>
+  <div id="editform">
+    <form class="form-horizontal" (submit)="changeProduct()">
+      <!-- use the json pipe to see how Productedit changes in real time  <p>{{ Productedit | json }}</p>-->
+      <p>{{ errors }}</p>
+      <div class="form-group">
+        <label class="control-label" for="title">Title: </label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="Productedit.title"
+          [(ngModel)]="Productedit.title"
+        />
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="price">Price: </label>
+        <input
+          class="form-control"
+          id="price"
+          type="text"
+          name="Productedit.price"
+          [(ngModel)]="Productedit.price"
+        />
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="url">Image Url: </label>
+        <input
+          class="form-control"
+          id="url"
+          type="text"
+          name="Productedit.url"
+          [(ngModel)]="Productedit.url"
+        />
+      </div>
+      <br />
+      <input class="btn btn-primary" type="submit" value="Edit Product" />
+      <button
+        id="deleteproduct"
+        class="btn btn-primary"
+        (click)="onDelete(Productedit._id)"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
 </div>
