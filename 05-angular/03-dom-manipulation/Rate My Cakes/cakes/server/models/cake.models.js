@@ -36,4 +36,4 @@ var CakeSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Cake', CakeSchema);
+module.exports = mongoose.model('Cake', CakeSchema), mongoose.model('Rating', RatingSchema);

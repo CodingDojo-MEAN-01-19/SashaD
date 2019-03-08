@@ -1,0 +1,12 @@
+#createproduct {
+  align-content: center;
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 90%;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#createproduct h2 {
+  text-align: left;
+}

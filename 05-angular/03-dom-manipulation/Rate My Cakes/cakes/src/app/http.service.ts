@@ -7,11 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   constructor(private _http: HttpClient) { }
 
-  getCakes() {
-    console.log('SUCCESS');
-    return this._http.get('/cakes');
+  getAllCakes() {
+    return this._http.get('/cakes/allCakes');
   }
-  addCake(newCake) {
-    return this._http.post('/cakes', newCake);
+  makeNewCake(obj) {
+    return this._http.post('/cakes/newCake', obj);
+  }
+  makeNewReview(obj) {
+    return this._http.post('/cakes/newRating', obj);
   }
 }

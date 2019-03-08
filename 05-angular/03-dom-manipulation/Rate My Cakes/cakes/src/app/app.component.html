@@ -15,17 +15,16 @@
     <br /><br />
       <div id="formbox">
         <span><h3>Submit a cake for rating</h3></span>
-        <form (submit)="createCakeFromService()">
+        <form (submit)="makeNewCake()">
           <!-- use the json pipe to see how newTask changes in real time  <p>{{ newTask | json }}</p>-->
-          <p>{{ errors }}</p>
           <div class="form-group">
             <label for="title">Baker Name: </label>
             <input
               class="form-control"
               type="text"
               id="bakerName"
-              name="newTask.bakerName"
-              [(ngModel)]="newCake.bakerName"
+              name="bakerName"
+              [(ngModel)]="newCake.baker"
             />
           </div>
           <div class="form-group">
@@ -34,67 +33,49 @@
               class="form-control"
               id="imageUrl"
               type="text"
-              name="newCake.imageUrl"
-              [(ngModel)]="newCake.imageUrl"
+              name="url"
+              [(ngModel)]="newCake.url"
             />
           </div>
           <br />
           <input type="submit" value="Submit" />
         </form>
       </div>
-      <div id="cakesbox" *ngFor="let cake of cakes">
+      <div id="cakesbox">
         <span>
-          <div>
-              <img src="http://subdomain.yourdomain.com/images/whatever_image.png" alt="A Cake" width="100" height="100" />
-            <div id="rateform">
-              <form (submit)="onSubmit()">
-                  <p>{{ errors }}</p>
-                  <div class="form-group">
-                    <select
-                        class="form-control"
-                        id="title"
-                        name="newRate.rating"
-                        [(ngModel)]="newRate.rating"
-                      >
-                      <option value="5">5 Stars</option>
-                      <option value="4">4 Stars</option>
-                      <option value="3">3 Stars</option>
-                      <option value="2">2 Stars</option>
-                      <option value="1">1 Star</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
+            <div *ngIf = 'allCakes'>
+            <div *ngFor = 'let cake of allCakes'>
+              <img (click) = 'viewCake(cake._id)' src="{{ cake.image_url }}" alt="A Cake" width="140" height="140" />
+              <div id="rateform">
+                <form (submit)='addNewReview(cake._id)'>
+                    <div class="form-group">
+                      <select
+                          class="form-control"
+                          id="stars"
+                          name="stars"
+                          [(ngModel)]="newReview.stars"
+                        >
+                        <option value="5">5 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="2">2 Stars</option>
+                        <option value="1">1 Star</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <input
                         class="form-control"
                         id="comment"
                         type="text"
-                        name="newCake.comment"
-                        [(ngModel)]="newRate.comment"
+                        name="comment"
+                        [(ngModel)]="newReview.comment"
                       />
                     </div>
-              </form>
+                    <input style="font-size: 15px; vertical-align: top;"type="submit" value="Rate" />
+                </form>
+            </div>
             </div>
           </div>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>There will be many cakes here tomorrow</h4>
-        <h4>This is to test the scroll feature.</h4>
-        <h4>Is it working</h4>
       </span>
       </div>
     </div>

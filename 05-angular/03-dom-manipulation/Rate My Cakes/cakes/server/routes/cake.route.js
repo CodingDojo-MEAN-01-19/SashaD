@@ -5,8 +5,9 @@ const { cakeController } = require('../controllers');
 const router = require('express').Router();
 
 module.exports = router
-  .get('/:id', cakeController.show)
   .get('/', cakeController.index)
-  .post('/', cakeController.create)
-  .put('/:id', cakeController.rate)
-  .delete('/:id', cakeController.destroy);
+  .get('/allCakes', cakeController.getAllCakes)
+  .get('/cake/:id', cakeController.getCake)
+  .post('/newCake', cakeController.makeNewCake)
+  .post('/newRating', cakeController.makeNewRating);
+

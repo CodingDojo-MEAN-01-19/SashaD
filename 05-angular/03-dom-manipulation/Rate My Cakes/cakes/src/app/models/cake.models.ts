@@ -1,8 +1,8 @@
 export class Cake {
   constructor(
     public id: number,
-    public bakerName: string,
-    public imageUrl: string,
+    public baker: string,
+    public url: string,
     public ratings: [Rating]
   ) {}
 }
