@@ -1,0 +1,9 @@
+#brandcomponent {
+  align-content: center;
+  border: 3px solid green;
+  border-radius: 5px;
+  width: 90%;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
