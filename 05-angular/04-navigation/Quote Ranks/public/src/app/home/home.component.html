@@ -1,0 +1,29 @@
+<div id="home">
+  <a [routerLink]="['/new']">Add a quotable author</a>
+  <h3>We have quotes by:</h3>
+  <table class=" table table-bordered">
+    <thead>
+      <td scope="col"><h4>Author</h4></td>
+      <td scope="col"><h4>Actions available</h4></td>
+    </thead>
+    <tbody *ngFor="let author of authors">
+      <td scope="row">{{ author.name }}</td>
+      <td>
+        <button
+          id="viewQuotes"
+          class="btn btn-primary"
+          (click)="onShowQuotes(author._id)"
+        >
+          View Quotes
+        </button>
+        <button
+          id="editauthor"
+          class="btn btn-primary"
+          (click)="onEditAuthor(author._id)"
+        >
+          Edit
+        </button>
+      </td>
+    </tbody>
+  </table>
+</div>

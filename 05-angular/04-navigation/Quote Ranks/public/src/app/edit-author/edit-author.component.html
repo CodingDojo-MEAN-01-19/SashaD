@@ -1,0 +1,24 @@
+<a [routerLink]="['/']">Home</a>
+<h3>Edit the author:</h3>
+<div id="editauthor">
+  <div id="editform">
+    <form class="form-horizontal" (submit)="editAuthor()">
+      <!-- use the json pipe to see how newProduct changes in real time  <p>{{ newProduct | json }}</p>-->
+      <p>{{ errors }}</p>
+      <div class="form-group">
+        <label class="control-label" for="title">Title: </label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="Authoredit.name"
+          [(ngModel)]="Authoredit.name"
+        />
+      </div>
+      <input class="btn btn-primary" type="submit" value="Submit" />
+      <button id="goback" class="btn btn-primary" (click)="GoBack()">
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>

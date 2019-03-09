@@ -1,0 +1,24 @@
+a {
+  margin-left: 10%;
+  font-size: 18px;
+}
+h3 {
+  color: purple;
+  margin-left: 10%;
+}
+#editform {
+  border: 1px solid black;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  align-content: center;
+}
+form {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+button {
+  margin-left: 10px;
+}
