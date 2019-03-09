@@ -46,7 +46,6 @@ module.exports = {
       },
       {
         runValidators: true,
-        context: 'query',
       }
     )
       .then(quote => res.json({ message: 'Quote created', info: quote }))
@@ -54,10 +53,14 @@ module.exports = {
   },
   editAuthor(req, res) {
     // update resource
-    Author.findOneAndUpdate({ _id: req.params.id }, req.body, {
-      runValidators: true,
-      context: 'query',
-    })
+    Author.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: { name: req.body.name } },
+      {
+        runValidators: true,
+        context: 'query',
+      }
+    )
       .then(author => res.json({ message: 'Author Editted', info: author }))
       .catch(err => res.json({ message: 'Edit Author Error', error: err }));
   },

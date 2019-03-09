@@ -32,11 +32,12 @@ export class EditAuthorComponent implements OnInit {
       }
     });
   }
-  editAuthor() {
+  editA() {
     const editA = this._http.editAuthor(this.authorId, this.Authoredit);
     editA.subscribe(data => {
       if (data['error']) {
         this.errors = data['error'].message;
+        console.log(this.errors);
       } else {
         this.router.navigateByUrl('/');
         this.errors = '';
