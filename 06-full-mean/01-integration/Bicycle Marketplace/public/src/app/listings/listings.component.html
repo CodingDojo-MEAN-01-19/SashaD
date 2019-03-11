@@ -1,0 +1,138 @@
+<div id="listings">
+  <div class="navbar">
+    <a [routerLink]="['/browse']">Browse</a> |
+    <a [routerLink]="['/listings']">My Listings</a> |
+    <a href="/api/users/logout">Log Off</a>
+  </div>
+  <div id="createbike">
+    <h3>Create Listing</h3>
+    {{ form.valid | json }}
+    <div id="createform">
+      <form
+        (submit)="onCreate($event, form)"
+        #form="ngForm"
+        style="width: 100%; display: inline-block; vertical-align: top;"
+      >
+        <fieldset>
+          <div id="createLeft">
+            <div id="leftImage">
+              <label for="image">Image Upload</label>
+              <input
+                style="width: 100%"
+                type="text"
+                name="url"
+                [(ngModel)]="bike.url"
+                required
+              />
+            </div>
+            <div id="rightInfo">
+              <label for="title">Title</label>
+              <input
+                style="width: 40%; display: block;"
+                type="text"
+                name="title"
+                [(ngModel)]="bike.title"
+                required
+              />
+              <label for="description">Description </label>
+              <textarea
+                style="width: 100%"
+                rows="3"
+                name="description"
+                [(ngModel)]="bike.description"
+                required
+              >
+              </textarea>
+            </div>
+          </div>
+          <div id="createRight">
+            <label for="price">Price</label>
+            <input
+              style="width: 100%"
+              type="text"
+              name="price"
+              [(ngModel)]="bike.price"
+              required
+            />
+            <label for="location">Location</label>
+            <input
+              style="width: 100%"
+              type="text"
+              name="location"
+              [(ngModel)]="bike.location"
+              required
+            />
+            <button class="btn btn-success" *ngIf="form.valid">CREATE</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div id="createbike">
+    <h3>Edit/Delete Listings</h3>
+    <div id="createform" *ngFor="let Bike of bikes">
+      <form
+        (submit)="onEdit($event, form)"
+        #form="ngForm"
+        style="width: 100%; display: inline-block; vertical-align: top;"
+      >
+        <fieldset>
+          <div id="createLeft">
+            <div id="leftImage">
+              <label for="image">Image Upload</label>
+              <input
+                style="width: 100%"
+                type="text"
+                name="Bike.url"
+                [(ngModel)]="Bike.url"
+                required
+              />
+              <img id="image" src="{{ Bike.url }}" alt="bikeImage" />
+            </div>
+            <div id="rightInfo">
+              <label for="title">Title</label>
+              <input
+                style="width: 40%; display: block;"
+                type="text"
+                name="Bike.title"
+                [(ngModel)]="Bike.title"
+                required
+              />
+              <label for="description">Description </label>
+              <textarea
+                style="width: 100%"
+                rows="5"
+                name="Bike.description"
+                [(ngModel)]="Bike.description"
+                required
+              >
+              </textarea>
+            </div>
+          </div>
+          <div id="createRight">
+            <label for="price">Price</label>
+            <input
+              style="width: 100%"
+              type="text"
+              name="Bike.price"
+              [(ngModel)]="Bike.price"
+              required
+            />
+            <label for="location">Location</label>
+            <input
+              style="width: 100%"
+              type="text"
+              name="Bike.location"
+              [(ngModel)]="Bike.location"
+              required
+            />
+            <button class="btn btn-success" *ngIf="form.valid">UPDATE</button>
+            <button class="btn btn-danger" (click)="onDelete(Bike._id)">
+              DELETE
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

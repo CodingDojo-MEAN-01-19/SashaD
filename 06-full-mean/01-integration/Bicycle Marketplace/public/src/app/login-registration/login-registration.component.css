@@ -1,0 +1,48 @@
+#bikeofday {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#bikeofday h3 {
+  color: rgb(63, 114, 182);
+}
+
+/* This will be for the bike of the day box */
+#BikeoDay {
+  background-color: rgb(187, 187, 187);
+  border: 2px solid black;
+  padding: 2px;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+#imageCont {
+  height: 150px;
+  width: 25%;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+#bikepic {
+  height: 100%;
+  width: auto;
+}
+
+#BikeOfDayInfo {
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  vertical-align: top;
+}
+#priceLoc {
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+  text-align: center;
+}

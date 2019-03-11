@@ -1,0 +1,70 @@
+.navbar {
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+#listings {
+  background-color: rgb(187, 187, 187);
+  border-top: 2px solid black;
+  width: 100%;
+  padding: 5px;
+}
+
+#bikelist {
+  background-color: white;
+  border: 2px solid black;
+  width: 98%;
+  padding: 20px;
+  margin-top: 10px;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 570px;
+  overflow: scroll;
+}
+#bikeObj {
+  background-color: rgb(187, 187, 187);
+  border: 2px solid black;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+#createLeft {
+  width: 80%;
+  display: inline-block;
+}
+#leftImage {
+  width: 35%;
+  display: inline-block;
+  vertical-align: top;
+}
+#rightInfo {
+  width: 55%;
+  display: inline-block;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+#createRight {
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+}
+#image {
+  width: 98%;
+  height: 150px;
+  overflow: hidden;
+  margin-left: 1%;
+  margin-right: 1%;
+  display: inline-block;
+}
+/* Search Bar */
+.stylish-input-group .input-group-addon {
+  background: white !important;
+}
+.stylish-input-group .form-control {
+  border-right: 0;
+  box-shadow: 0 0 0;
+  border-color: #ccc;
+}
+.stylish-input-group button {
+  border: 0;
+  background: transparent;
+}

@@ -1,0 +1,136 @@
+<div id="bikeofday">
+  <h3>Bike of the day!</h3>
+  <div id="BikeoDay">
+    <div id="imageCont">
+      <img id="bikepic" src="" alt="Bike pic" />
+    </div>
+    <div id="BikeOfDayInfo">
+      <h1>Title</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+        imperdiet ornare libero. Sed at justo tellus. Nullam molestie diam mi,
+        hendrerit aliquam eros egestas vitae. Cras tincidunt ultricies nunc,
+        rutrum dignissim erat fermentum at.
+      </p>
+    </div>
+    <div id="priceLoc">
+      <h1>$950</h1>
+      <h5>Los Angeles, CA</h5>
+    </div>
+  </div>
+</div>
+<div id="forms">
+  <form
+    (submit)="onSubmitRegistration(register.value)"
+    #register="ngForm"
+    style="width: 40%; display: inline-block; margin-right: 10%; margin-left: 4%; border: 2px solid black;
+    padding: 10px; border-radius: 5px;"
+  >
+    <fieldset>
+      <legend style="text-align: center;"><h1>Registration</h1></legend>
+      <div *ngIf="registrationErrors.length">
+        <ul class="alert alert-danger">
+          <li *ngFor="let error of registrationErrors">{{ error }}</li>
+        </ul>
+      </div>
+      <label for="first_name">First Name: </label>
+      <input
+        style="width: 100%"
+        type="text"
+        name="first_name"
+        #first_name="ngModel"
+        [(ngModel)]="Nuser.first_name"
+      />
+      <br />
+      <label for="last_name">Last Name: </label>
+      <input
+        style="width: 100%"
+        type="text"
+        name="last_name"
+        #lastName="ngModel"
+        [(ngModel)]="Nuser.last_name"
+      />
+      <br />
+      <label for="email">Email: </label>
+      <input
+        style="width: 100%"
+        type="email"
+        name="email"
+        #email="ngModel"
+        [(ngModel)]="Nuser.email"
+      />
+      <br />
+      <label for="password">Password: </label>
+      <input
+        style="width: 100%"
+        type="password"
+        name="password"
+        #password="ngModel"
+        [(ngModel)]="Nuser.password"
+        minlength="8"
+      />
+      <br />
+      <label for="confirm_password">Confirm Password: </label>
+      <input
+        style="width: 100%"
+        type="password"
+        name="confirm_password"
+        id="confirm_password"
+      />
+      <br />
+      <br />
+      <button
+        style="width: 90%; margin-right: 5%; margin-left: 5%;"
+        class="btn btn-info"
+        *ngIf="register.valid"
+      >
+        Register
+      </button>
+      <br />
+    </fieldset>
+  </form>
+  <form
+    (submit)="onSubmit(login.value)"
+    #login="ngForm"
+    style="width: 40%; display: inline-block; vertical-align: top; border: 2px solid black;
+    padding: 10px; margin-right: 4%; border-radius: 5px;"
+  >
+    <fieldset>
+      <legend style="text-align: center;"><h1>Login</h1></legend>
+      <div *ngIf="errors.length">
+        <ul class="alert alert-danger">
+          <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+      </div>
+      <label for="email">Your Email: </label>
+      <input
+        style="width: 100%"
+        type="email"
+        name="email"
+        id="email"
+        #email="ngModel"
+        [(ngModel)]="user.email"
+      />
+      <br />
+      <label for="password">Password: </label>
+      <input
+        style="width: 100%"
+        type="password"
+        name="password"
+        #password="ngModel"
+        [(ngModel)]="user.password"
+        minlength="8"
+      />
+      <br />
+      <br />
+      <button
+        tyle="width: 90%; margin-right: 5%; margin-left: 5%;"
+        class="btn btn-success"
+        *ngIf="login.valid"
+      >
+        Login
+      </button>
+      <br />
+    </fieldset>
+  </form>
+</div>

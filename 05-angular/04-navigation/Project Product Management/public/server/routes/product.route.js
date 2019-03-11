@@ -9,4 +9,7 @@ module.exports = router
   .get('/edit/:id', productController.show)
   .post('/new', productController.create)
   .put('/edit/:id', productController.update)
-  .delete('/:id', productController.destroy);
+  .delete('/:id', productController.destroy)
+  .all('*', (req, res, next) => {
+    res.sendFile(path.resolve('./dist/index.html'));
+  });

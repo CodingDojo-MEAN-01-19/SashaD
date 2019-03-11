@@ -1,0 +1,66 @@
+<div id="browse">
+  <div class="navbar">
+    <a [routerLink]="['/browse']">Browse</a> |
+    <a [routerLink]="['/listings']">My Listings</a> |
+    <a href="/api/users/logout">Log Off</a>
+  </div>
+  <div id="listings">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div id="imaginary_container">
+            <div class="input-group stylish-input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search"
+                [(ngModel)]="strsearch"
+              />
+              <span class="input-group-addon">
+                <button type="submit">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="bikelist">
+      <div
+        id="bikeObj"
+        *ngFor="let bike of (bikes | search: strsearch); let idx = index"
+      >
+        <div id="createLeft">
+          <div id="leftImage">
+            <img id="image" src="{{ bike.url }}" alt="bike photo" />
+          </div>
+          <div id="rightInfo">
+            <h1>{{ bike.title }}</h1>
+            <p>
+              {{ bike.description }}
+            </p>
+          </div>
+        </div>
+        <div id="createRight">
+          <h1>${{ bike.price }}</h1>
+          <p>{{ bike.location }}</p>
+          <button
+            *ngIf="currentUser !== bike['userid']"
+            (click)="contact(bike)"
+            class="btn btn-info"
+          >
+            Contact
+          </button>
+          <button
+            *ngIf="currentUser === bike['userid']"
+            (click)="onDelete(bike['_id'])"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
